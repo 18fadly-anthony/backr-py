@@ -62,6 +62,6 @@ print hash[:10]
          # backup_number = last +1
          # put location in file called backup number
          # put that number in last.txt
-         
+
 # if compression set to true
     # put the fact that it's compressed in a file
