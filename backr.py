@@ -20,13 +20,18 @@ if os.path.isfile(".backr-location"):
     print ".backr-location exists"
     with open('.backr-location', 'r') as myfile:
         backup_location = myfile.read()
-    print backup_location
-print "asdfa"
+    print "will save to "+backup_location
+
     # if it does not exist, check for directory with dirname-hash in default location
 	    # if this exists then backup_location = default
+        # later because there isn't a default yet ^
+
 	    # else prompt user for backup_location, then check if it exists
 	        # if exists, use it, else ask user to create
-
+else:
+    backup_location = raw_input("Enter a location to save: ")
+    if os.path.isdir(backup_location):
+        print "will save to " + backup_location
 # comment for save:
 # prompt user for comment to save
     # make sure comment is a possible dir name
