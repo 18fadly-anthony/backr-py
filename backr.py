@@ -6,11 +6,11 @@
 
 # take arg or prompt user for whether or not compression should be used
 # use_compression = True or False
-q = raw_input("Do you want to use compression? y/n") # get better input
-if q == 'y':
-   use_compression=True
-else:
-    use_compression=False
+#q = raw_input("Do you want to use compression? y/n") # get better input
+#if q == 'y': # uncomment these later when adding compression (after it already works)
+#   use_compression=True
+#else:
+#    use_compression=False
 
 # determining save location:
 # check for saveto file
