@@ -18,9 +18,10 @@ import os
 # check for saveto file
 if os.path.isfile(".backr-location"):
     print ".backr-location exists"
-    #str = open('.backr-location', 'r').read()
-    #print str
-    # if it exists, backup_location = contents of saveto file
+    with open('.backr-location', 'r') as myfile:
+        backup_location = myfile.read()
+    print backup_location
+print "asdfa"
     # if it does not exist, check for directory with dirname-hash in default location
 	    # if this exists then backup_location = default
 	    # else prompt user for backup_location, then check if it exists
