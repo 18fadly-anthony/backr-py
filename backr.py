@@ -2,6 +2,8 @@
 
 # backr backup tool in python
 
+import os
+
 # these are just my notes for what i want it do rn
 
 # take arg or prompt user for whether or not compression should be used
@@ -14,6 +16,10 @@
 
 # determining save location:
 # check for saveto file
+if os.path.isfile(".backr-location"):
+    print ".backr-location exists"
+    #str = open('.backr-location', 'r').read()
+    #print str
     # if it exists, backup_location = contents of saveto file
     # if it does not exist, check for directory with dirname-hash in default location
 	    # if this exists then backup_location = default
