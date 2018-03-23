@@ -26,8 +26,8 @@ if os.path.isfile(".backr-location"):
 	    # if this exists then backup_location = default
         # later because there isn't a default yet ^
 
-	    # else prompt user for backup_location, then check if it exists
-	        # if exists, use it, else ask user to create
+# else prompt user for backup_location, then check if it exists
+    # if exists, use it, else ask user to create
 else:
     backup_location = raw_input("Enter a location to save: ")
     if os.path.isdir(backup_location):
@@ -38,9 +38,27 @@ else:
         f.close()
     else:
         print backup_location + " does not exist"
+
 # comment for save:
 # prompt user for comment to save
+comment = raw_input("Enter a comment for this backup (or leave blank): ")
     # make sure comment is a possible dir name
+'''
+https://stackoverflow.com/questions/295135/turn-a-string-into-a-valid-filename
+import unicodedata, re
+def slugify(value):
+    """
+    Normalizes string, converts to lowercase, removes non-alpha characters,
+    and converts spaces to hyphens.
+    """
+    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
+    value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
+    value = unicode(re.sub('[-\s]+', '-', value))
+    print value
+q=raw_input("gib: ")
+q=q.decode('utf-8')
+slugify(q)
+'''
         # if not, tell user and ask again
 
 # set some varibles:
