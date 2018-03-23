@@ -32,6 +32,12 @@ else:
     backup_location = raw_input("Enter a location to save: ")
     if os.path.isdir(backup_location):
         print "will save to " + backup_location
+        # add this to new .backr location file
+        f = open( '.backr-location', 'w' )
+        f.write(backup_location)
+        f.close()
+    else:
+        print backup_location + " does not exist"
 # comment for save:
 # prompt user for comment to save
     # make sure comment is a possible dir name
