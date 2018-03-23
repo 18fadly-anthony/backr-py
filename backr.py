@@ -2,7 +2,7 @@
 
 # backr backup tool in python
 
-import os
+import os, unicodedata, re
 
 # these are just my notes for what i want it do rn
 
@@ -43,9 +43,8 @@ else:
 # prompt user for comment to save
 comment = raw_input("Enter a comment for this backup (or leave blank): ")
     # make sure comment is a possible dir name
-'''
-https://stackoverflow.com/questions/295135/turn-a-string-into-a-valid-filename
-import unicodedata, re
+
+# https://stackoverflow.com/questions/295135/turn-a-string-into-a-valid-filename
 def slugify(value):
     """
     Normalizes string, converts to lowercase, removes non-alpha characters,
@@ -54,12 +53,10 @@ def slugify(value):
     value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
     value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
     value = unicode(re.sub('[-\s]+', '-', value))
-    print value
-q=raw_input("gib: ")
-q=q.decode('utf-8')
-slugify(q)
-'''
-        # if not, tell user and ask again
+comment = comment.decode('utf-8')
+comment = slugify(comment)
+# need to convert to string
+# http://stackoverflow.com/questions/10288016/ddg#10288345
 
 # set some varibles:
 # set current dir
