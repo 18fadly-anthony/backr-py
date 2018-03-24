@@ -38,6 +38,7 @@ else:
         f.close()
     else:
         print backup_location + " does not exist"
+        exit()
 
 # comment for save:
 # prompt user for comment to save
@@ -57,6 +58,8 @@ comment = comment.decode('utf-8')
 comment = slugify(comment)
 # need to convert to string
 # http://stackoverflow.com/questions/10288016/ddg#10288345
+str_comment=comment.encode('utf-8') # unicode to str
+print "comment is "+str_comment
 
 # set some varibles:
 # set current dir
