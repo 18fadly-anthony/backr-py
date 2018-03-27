@@ -2,7 +2,7 @@
 
 # backr backup tool in python
 
-import os, unicodedata, re
+import os
 
 # these are just my notes for what i want it do rn
 
