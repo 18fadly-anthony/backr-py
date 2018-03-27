@@ -2,7 +2,7 @@
 
 # backr backup tool in python
 
-import os, datetime
+import os, datetime, hashlib
 
 # these are just my notes for what i want it do rn
 
@@ -65,16 +65,9 @@ basename=os.path.basename(dir)
 # set current time in a possible dir format
 time=datetime.datetime.now().strftime('%G-%b-%d-%I%M%p')
 #print time
-# generate a hash of the current dir using something like:
-
-'''
-import hashlib, sys
-
-inputt = sys.argv[1]
-
-hash = hashlib.sha1(str(inputt).encode("UTF-8")).hexdigest()
-print hash[:10]
-'''
+# generate a hash of the current dir
+hash = hashlib.sha1(dir.encode("UTF-8")).hexdigest()
+hash = hash[:7]
 
 # backup folder name will be /location/basename-hash/time/contents
 
