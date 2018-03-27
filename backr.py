@@ -42,23 +42,17 @@ else:
 
 # comment for save:
 # prompt user for comment to save
-comment = raw_input("Enter a comment for this backup (or leave blank): ")
-    # make sure comment is a possible dir name
-
-# https://stackoverflow.com/questions/295135/turn-a-string-into-a-valid-filename
-def slugify(value):
-    """
-    Normalizes string, converts to lowercase, removes non-alpha characters,
-    and converts spaces to hyphens.
-    """
-    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
-    value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
-    value = unicode(re.sub('[-\s]+', '-', value))
-comment = comment.decode('utf-8')
-comment = slugify(comment)
-# need to convert to string
-# http://stackoverflow.com/questions/10288016/ddg#10288345
-#str_comment=unicode(comment,'utf-8')#comment.encode('utf-8') # unicode to str
+def get_comment():
+    has_comment=0
+    while(has_comment==0):
+        comment = raw_input("Enter a comment for this backup (or leave blank): ")
+        # make sure comment is a possible dir name
+        if "/" in comment:
+            print "comment cannot contain '/'"
+        else:
+            return comment
+            has_comment=1
+get_comment()
 #print "comment is "+str_comment
 
 # set some varibles:
