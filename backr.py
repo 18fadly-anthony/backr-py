@@ -2,7 +2,7 @@
 
 # backr backup tool in python
 
-import os
+import os, datetime
 
 # these are just my notes for what i want it do rn
 
@@ -61,8 +61,10 @@ dir=os.getcwd()
 #print dir
 # basename folder
 basename=os.path.basename(dir)
-print basename
+#print basename
 # set current time in a possible dir format
+time=datetime.datetime.now().strftime('%G-%b-%d-%I%M%p')
+#print time
 # generate a hash of the current dir using something like:
 
 '''
