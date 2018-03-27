@@ -57,8 +57,11 @@ if comment != "":
     print "will use comment '"+comment+"'"
 
 # set some varibles:
-# set current dir
+dir=os.getcwd()
+#print dir
 # basename folder
+basename=os.path.basename(dir)
+print basename
 # set current time in a possible dir format
 # generate a hash of the current dir using something like:
 
