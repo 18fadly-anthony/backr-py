@@ -52,8 +52,9 @@ def get_comment():
         else:
             return comment
             has_comment=1
-get_comment()
-#print "comment is "+str_comment
+comment=get_comment()
+if comment != "":
+    print "will use comment '"+comment+"'"
 
 # set some varibles:
 # set current dir
