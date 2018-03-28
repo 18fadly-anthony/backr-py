@@ -26,7 +26,6 @@ use_compression=query_yes_no("Use compression?")
 # determining save location:
 # check for saveto file
 if os.path.isfile(".backr-location"):
-    print ".backr-location exists"
     with open('.backr-location', 'r') as myfile:
         backup_location = myfile.read()
     print "will save to "+backup_location
@@ -70,7 +69,8 @@ dir=os.getcwd()
 basename=os.path.basename(dir)
 #print basename
 # set current time in a possible dir format
-time=datetime.datetime.now().strftime('%G-%b-%d-%I%M%p')
+time=datetime.datetime.now().strftime('%G-%b-%d-%I:%M%p:%S')
+print time
 time+="-"
 time+=comment
 #print time
@@ -103,6 +103,10 @@ copy_tree(dir, backup_location)
 
 # if compression was set to true
     # compress all the files in that folder individually
+if use_compression:
+    #os.system("gzip -rf "+backup_location) # old backr way
+    for filename in os.listdir(backup_location):
+        print filename
 
 # output
 
