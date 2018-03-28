@@ -75,7 +75,13 @@ basehash += hash
 
 # backup folder name will be /location/basename-hash/time/contents
 
+backup_location += "/"
+backup_location += basehash
+
 # mkdir backup folder
+
+if not os.path.exists(backup_location):
+    os.makedirs(backup_location)
 
 # cp -r this folder that folder
 
