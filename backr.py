@@ -2,18 +2,26 @@
 
 # backr backup tool in python
 
-import os, datetime, hashlib
+import os, datetime, hashlib, sys
 from distutils.dir_util import copy_tree
 
-# these are just my notes for what i want it do rn
-
-# take arg or prompt user for whether or not compression should be used
-# use_compression = True or False
-#q = raw_input("Do you want to use compression? y/n") # get better input
-#if q == 'y': # uncomment these later when adding compression (after it already works)
-#   use_compression=True
-#else:
-#    use_compression=False
+# http://stackoverflow.com/questions/3041986/ddg#3041990
+def query_yes_no(question):
+    default=None
+    valid = {"yes": True, "y": True, "ye": True,
+             "no": False, "n": False}
+    prompt = " [y/n] "
+    while True:
+        sys.stdout.write(question + prompt)
+        choice = raw_input().lower()
+        if default is not None and choice == '':
+            return valid[default]
+        elif choice in valid:
+            return valid[choice]
+        else:
+            sys.stdout.write("Please respond with 'yes' or 'no' "
+                             "(or 'y' or 'n').\n")
+use_compression=query_yes_no("Use compression?")
 
 # determining save location:
 # check for saveto file
