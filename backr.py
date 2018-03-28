@@ -108,7 +108,7 @@ if use_compression:
     #for filename in os.listdir(backup_location):
     #    print filename
 
-# output
+print "folder backed up to "+backup_location
 
 # IMPORTANT, i may want to store all the version numbers in one file instead of multiple
 
