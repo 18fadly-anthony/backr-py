@@ -3,6 +3,7 @@
 # backr backup tool in python
 
 import os, datetime, hashlib
+from distutils.dir_util import copy_tree
 
 # these are just my notes for what i want it do rn
 
@@ -53,8 +54,6 @@ def get_comment():
             return comment
             has_comment=1
 comment=get_comment()
-if comment != "":
-    print "will use comment '"+comment+"'"
 
 # set some varibles:
 dir=os.getcwd()
@@ -64,6 +63,8 @@ basename=os.path.basename(dir)
 #print basename
 # set current time in a possible dir format
 time=datetime.datetime.now().strftime('%G-%b-%d-%I%M%p')
+time+="-"
+time+=comment
 #print time
 # generate a hash of the current dir
 hash = hashlib.sha1(dir.encode("UTF-8")).hexdigest()
@@ -90,6 +91,7 @@ if not os.path.exists(backup_location):
     os.makedirs(backup_location)
 
 # cp -r this folder that folder
+copy_tree(dir, backup_location)
 
 # if compression was set to true
     # compress all the files in that folder individually
