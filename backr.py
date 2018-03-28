@@ -69,6 +69,10 @@ time=datetime.datetime.now().strftime('%G-%b-%d-%I%M%p')
 hash = hashlib.sha1(dir.encode("UTF-8")).hexdigest()
 hash = hash[:7]
 
+basehash = basename
+basehash += "-"
+basehash += hash
+
 # backup folder name will be /location/basename-hash/time/contents
 
 # mkdir backup folder
