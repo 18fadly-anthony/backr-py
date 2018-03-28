@@ -83,6 +83,12 @@ backup_location += basehash
 if not os.path.exists(backup_location):
     os.makedirs(backup_location)
 
+backup_location += "/"
+backup_location += time
+
+if not os.path.exists(backup_location):
+    os.makedirs(backup_location)
+
 # cp -r this folder that folder
 
 # if compression was set to true
