@@ -7,8 +7,7 @@
 ## ToDo
 
 1. Do compression in python rather than from gzip
-2. Have a default location
-3. Ability to restore from backup
-4. Version  Control file tracks backups
-5. Encryption
-6. Take arguments instead of input for compression, use default, encrypt
+2. Ability to restore from backup
+3. Version  Control file tracks backups
+4. Encryption
+5. Take arguments instead of input for compression, use default, encrypt
