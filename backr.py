@@ -30,11 +30,6 @@ if os.path.isfile(".backr-location"):
     with open('.backr-location', 'r') as myfile:
         backup_location = myfile.read()
     print "will save to "+backup_location
-
-    # if it does not exist, check for directory with dirname-hash in default location
-	    # if this exists then backup_location = default
-        # later because there isn't a default yet ^
-
 # else prompt user for backup_location, then check if it exists
     # if exists, use it, else ask user to create
 else:
