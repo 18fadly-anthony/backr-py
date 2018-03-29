@@ -4,6 +4,7 @@
 
 import os, datetime, hashlib, sys
 from distutils.dir_util import copy_tree
+import cPickle as pickle
 
 # http://stackoverflow.com/questions/3041986/ddg#3041990
 def query_yes_no(question):
@@ -113,27 +114,28 @@ print "folder backed up to "+backup_location
 
 # IMPORTANT, i may want to store all the version numbers in one file instead of multiple
 
-'''
-some stuff i started writing before i decided 1 file:
-
-# check for existence for version control folder
-if not os.path.exists(backbase+"/version-control")
+# check for existence for version control file
+vc_file=backbase+"/version-control.txt"
+if not os.path.exists(vc_file):
     # if it doesn't exist, make it
-    os.makedirs(backbase+"/version-control")
+    #os.makedirs(backbase+"/version-control")
     # put backup location including time in file called 1
-    f = open( backbase+"/version-control/1", 'w' )
-    f.write(backup_location)
-    f.close()
+    #f = open( backbase+"/version-control/1", 'w' )
+    #f.write(backup_location)
+    #f.close()
+    fw = open(vc_file,'wb')
+    pickle.dump(backup_location, fw)
+    fw.close()
     # put '1' in file called last.txt
-    f = open( backbase+"/version-control/last.txt", 'w' )
-    f.write(backup_location)
-    f.close()
+    #f = open( backbase+"/version-control/last.txt", 'w' )
+    #f.write(backup_location)
+    #f.close()
 # if it does exist
     # get contents of last.txt
     # backup_number = last +1
     # put location in file called backup number
     # put that number in last.txt
-'''
+
 # if compression set to true
     # put the fact that it's compressed in a file
 
