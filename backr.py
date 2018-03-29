@@ -118,18 +118,9 @@ print "folder backed up to "+backup_location
 vc_file=backbase+"/version-control.txt"
 if not os.path.exists(vc_file):
     # if it doesn't exist, make it
-    #os.makedirs(backbase+"/version-control")
-    # put backup location including time in file called 1
-    #f = open( backbase+"/version-control/1", 'w' )
-    #f.write(backup_location)
-    #f.close()
     fw = open(vc_file,'wb')
     pickle.dump(backup_location, fw)
     fw.close()
-    # put '1' in file called last.txt
-    #f = open( backbase+"/version-control/last.txt", 'w' )
-    #f.write(backup_location)
-    #f.close()
 # if it does exist
     # get contents of last.txt
     # backup_number = last +1
