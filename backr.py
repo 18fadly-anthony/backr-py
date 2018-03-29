@@ -124,9 +124,3 @@ if not os.path.exists(vc_file):
 
 # if compression set to true
     # put the fact that it's compressed in a file
-
-# things left to do
-    # compression in python
-    # default location
-    # restore from backup script
-    # pseudo version control
