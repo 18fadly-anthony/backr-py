@@ -85,6 +85,7 @@ basehash += hash
 
 backup_location += "/"
 backup_location += basehash
+backbase=backup_location
 
 # mkdir backup folder
 
@@ -112,15 +113,32 @@ print "folder backed up to "+backup_location
 
 # IMPORTANT, i may want to store all the version numbers in one file instead of multiple
 
-# check for existence for version control folder
-     # if it doesn't exist, make it
-         # put backup location including time in file called 1
-         # put '1' in file called last.txt
-     # if it does exist
-         # get contents of last.txt
-         # backup_number = last +1
-         # put location in file called backup number
-         # put that number in last.txt
+'''
+some stuff i started writing before i decided 1 file:
 
+# check for existence for version control folder
+if not os.path.exists(backbase+"/version-control")
+    # if it doesn't exist, make it
+    os.makedirs(backbase+"/version-control")
+    # put backup location including time in file called 1
+    f = open( backbase+"/version-control/1", 'w' )
+    f.write(backup_location)
+    f.close()
+    # put '1' in file called last.txt
+    f = open( backbase+"/version-control/last.txt", 'w' )
+    f.write(backup_location)
+    f.close()
+# if it does exist
+    # get contents of last.txt
+    # backup_number = last +1
+    # put location in file called backup number
+    # put that number in last.txt
+'''
 # if compression set to true
     # put the fact that it's compressed in a file
+
+# things left to do
+    # compression in python
+    # default location
+    # restore from backup script
+    # pseudo version control
