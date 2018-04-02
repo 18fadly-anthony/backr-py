@@ -6,6 +6,14 @@ import os, datetime, hashlib, sys
 from distutils.dir_util import copy_tree
 import cPickle as pickle
 
+# take args
+for i in range(len(sys.argv)):
+    if "-c" in sys.argv or "--compress" in sys.argv:
+        use_compression=True
+        prompt_for_compression=False
+    else:
+        prompt_for_compression=True
+
 # http://stackoverflow.com/questions/3041986/ddg#3041990
 def query_yes_no(question):
     default=None
@@ -22,7 +30,9 @@ def query_yes_no(question):
         else:
             sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
-use_compression=query_yes_no("Use compression?")
+
+if prompt_for_compression:
+    use_compression=query_yes_no("Use compression?")
 
 # determining save location:
 # check for saveto file
@@ -114,7 +124,7 @@ print "folder backed up to "+backup_location
 # IMPORTANT, i may want to store all the version numbers in one file instead of multiple
 
 # check for existence for version control file
-vc_file=backbase+"/backtrack.txt"
+vc_file=backbase+"/backtrack.txt"'''
 fw = open(vc_file,'wb')
 if not os.path.exists(vc_file):
     # if it doesn't exist, make it
@@ -124,11 +134,11 @@ if not os.path.exists(vc_file):
 # if it does exist
 else:
     # get contents of last.txt
-    pickle.load(fw)
+    #pickle.load(fw)
     # backup_number = last +1
     # put location in file called backup number
     # put that number in last.txt
-fw.close()
+fw.close()'''
 
 # if compression set to true
     # put the fact that it's compressed in a file
