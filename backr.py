@@ -124,21 +124,24 @@ print "folder backed up to "+backup_location
 # IMPORTANT, i may want to store all the version numbers in one file instead of multiple
 
 # check for existence for version control file
-vc_file=backbase+"/backtrack.txt"'''
-fw = open(vc_file,'wb')
+vc_file=backbase+"/backtrack.txt"
 if not os.path.exists(vc_file):
+    fw = open(vc_file,'wb')
     # if it doesn't exist, make it
     pickle.dump("1", fw)
     pickle.dump(backup_location, fw)
     pickle.dump(use_compression, fw)
+    fw.close()
 # if it does exist
 else:
+    #fw = open(vc_file,'wb')
     # get contents of last.txt
-    #pickle.load(fw)
+    tracks=pickle.load( open( vc_file, "rb" ))
+    print tracks
     # backup_number = last +1
     # put location in file called backup number
     # put that number in last.txt
-fw.close()'''
+    #fw.close()
 
 # if compression set to true
     # put the fact that it's compressed in a file
