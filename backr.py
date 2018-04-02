@@ -115,16 +115,20 @@ print "folder backed up to "+backup_location
 
 # check for existence for version control file
 vc_file=backbase+"/backtrack.txt"
+fw = open(vc_file,'wb')
 if not os.path.exists(vc_file):
     # if it doesn't exist, make it
-    fw = open(vc_file,'wb')
+    pickle.dump("1", fw)
     pickle.dump(backup_location, fw)
-    fw.close()
+    pickle.dump(use_compression, fw)
 # if it does exist
+else:
     # get contents of last.txt
+    pickle.load(fw)
     # backup_number = last +1
     # put location in file called backup number
     # put that number in last.txt
+fw.close()
 
 # if compression set to true
     # put the fact that it's compressed in a file
