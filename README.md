@@ -11,3 +11,4 @@
 3. Backtrack file tracks backups
 4. Encryption
 5. Take arguments instead of input for compression, use default, encrypt
+6. Help option
