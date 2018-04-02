@@ -114,7 +114,7 @@ print "folder backed up to "+backup_location
 # IMPORTANT, i may want to store all the version numbers in one file instead of multiple
 
 # check for existence for version control file
-vc_file=backbase+"/version-control.txt"
+vc_file=backbase+"/backtrack.txt"
 if not os.path.exists(vc_file):
     # if it doesn't exist, make it
     fw = open(vc_file,'wb')
