@@ -41,7 +41,6 @@ default_location=home+"/backrs"
 if os.path.isfile(".backr-location"):
     with open('.backr-location', 'r') as myfile:
         backup_location = myfile.read()
-    print "will save to "+backup_location
 # else prompt user for backup_location, then check if it exists
     # if exists, use it, else ask user to create
 else:
@@ -49,7 +48,6 @@ else:
     if backup_location=="":
         backup_location=default_location
     if os.path.isdir(backup_location):
-        print "will save to " + backup_location
         # add this to new .backr location file
         f = open( '.backr-location', 'w' )
         f.write(backup_location)
@@ -57,6 +55,7 @@ else:
     else:
         print backup_location + " does not exist"
         exit()
+print "will save to "+backup_location
 
 # comment for save:
 # prompt user for comment to save
@@ -127,7 +126,7 @@ print "folder backed up to "+backup_location
 vc_file=backbase+"/backtrack.txt"
 if not os.path.exists(vc_file):
     fw = open(vc_file,'wb')
-    data = ["backup_number=1","backup_location="+backup_location,"compression="+use_compression]
+    data = ["backup_number=1","backup_location="+backup_location,"compression="+str(use_compression)]
     pickle.dump(data, fw)
     fw.close()
 # if it does exist
