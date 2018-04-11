@@ -44,7 +44,7 @@ if os.path.isfile(".backr-location"):
 # else prompt user for backup_location, then check if it exists
     # if exists, use it, else ask user to create
 else:
-    backup_location = raw_input("Enter a location to save (or leave blank for default): ")
+    backup_location = raw_input("Enter a location to save (or leave blank for default "+default_location+" ): ")
     if backup_location=="":
         backup_location=default_location
     if os.path.isdir(backup_location):
