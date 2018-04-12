@@ -8,6 +8,10 @@ import cPickle as pickle
 
 # take args
 for i in range(len(sys.argv)):
+    if "-h" in sys.argv or "--help" in sys.argv:
+       print "backr simple backup tool"
+       print "usage: backr.py [-c|--compress] [-h|--help]"
+       exit()
     if "-c" in sys.argv or "--compress" in sys.argv:
         use_compression=True
         prompt_for_compression=False

@@ -11,6 +11,5 @@
 3. Backtrack file tracks backups
 4. Encryption
 5. Add arguments for
-    1. Help option
-    2. Use default option
-    3. Encrypt backup
+    1. Use default option
+    2. Encrypt backup
