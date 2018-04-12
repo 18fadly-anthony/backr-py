@@ -10,5 +10,7 @@
 2. Ability to restore from backup
 3. Backtrack file tracks backups
 4. Encryption
-5. Take arguments instead of input for compression, use default, encrypt
-6. Help option
+5. Add arguments for
+    1. Help option
+    2. Use default option
+    3. Encrypt backup
