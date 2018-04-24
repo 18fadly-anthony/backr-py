@@ -8,5 +8,4 @@
 
 1. Do compression in python rather than from gzip
 2. Ability to restore from backup
-3. Backtrack file tracks backups
-4. Encryption
+3. Encryption

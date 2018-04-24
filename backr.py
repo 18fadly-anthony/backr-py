@@ -143,5 +143,9 @@ if not os.path.exists(vc_file):
 # if it does exist
 else:
     #https://stackoverflow.com/questions/28077573/python-appending-to-a-pickled-list#28078157
-    tracks=pickle.load( open( vc_file, "rb" ))
-    print tracks
+    data=pickle.load( open( vc_file, "rb" ))
+    backup_number = (len(data)/3)+1
+    data+=["backup_number="+str(backup_number),"backup_location="+backup_location,"compression="+str(use_compression)]
+    fw = open(vc_file,'wb')
+    pickle.dump(data, fw)
+    fw.close()
