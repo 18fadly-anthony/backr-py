@@ -142,5 +142,6 @@ if not os.path.exists(vc_file):
     fw.close()
 # if it does exist
 else:
+    #https://stackoverflow.com/questions/28077573/python-appending-to-a-pickled-list#28078157
     tracks=pickle.load( open( vc_file, "rb" ))
     print tracks
