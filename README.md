@@ -6,6 +6,5 @@
 
 ## ToDo
 
-1. Do compression in python rather than from gzip
-2. Ability to restore from backup
-3. Encryption
+1. Ability to restore from backup
+2. Encryption
