@@ -2,7 +2,7 @@
 
 # backr backup tool in python
 
-import os, datetime, hashlib, sys
+import os, datetime, hashlib, sys, tarfile
 from distutils.dir_util import copy_tree
 import cPickle as pickle
 
@@ -124,10 +124,14 @@ copy_tree(dir, backup_location)
 # if compression was set to true
     # compress all the files in that folder individually
 if use_compression:
-    os.system("gzip -rf "+backup_location) # old backr way
+    #os.system("gzip -rf "+backup_location) # old backr way
     # TODO do compression in python not with gzip
     #for filename in os.listdir(backup_location):
     #    print filename
+    def make_tarfile(output_filename, source_dir):
+        with tarfile.open(output_filename, "w:gz") as tar:
+            tar.add(source_dir, arcname=os.path.basename(source_dir))
+    make_tarfile("test.tar",backup_location)
 
 print "folder backed up to "+backup_location
 
