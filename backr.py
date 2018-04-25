@@ -136,14 +136,20 @@ print "folder backed up to "+backup_location
 vc_file=backbase+"/backtrack.txt"
 if not os.path.exists(vc_file):
     fw = open(vc_file,'wb')
-    data = ["backup_number=1","backup_location="+backup_location,"compression="+str(use_compression)]
+    if not use_compression:
+        data = ["backup_number=1","backup_location="+backup_location,"compression="+str(use_compression)]
+    else:
+        data = ["backup_number=1","backup_location="+backbase+"/"+time+".tar.gz","compression="+str(use_compression)]
     pickle.dump(data, fw)
     fw.close()
 # if it does exist
 else:
     data=pickle.load( open( vc_file, "rb" ))
     backup_number = (len(data)/3)+1
-    data+=["backup_number="+str(backup_number),"backup_location="+backup_location,"compression="+str(use_compression)]
+    if not use_compression:
+        data+=["backup_number="+str(backup_number),"backup_location="+backup_location,"compression="+str(use_compression)]
+    else:
+        data+=["backup_number="+str(backup_number),"backup_location="+backbase+"/"+time+".tar.gz","compression="+str(use_compression)]
     fw = open(vc_file,'wb')
     pickle.dump(data, fw)
     fw.close()
