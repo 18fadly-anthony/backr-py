@@ -55,7 +55,7 @@ else:
     if not prompt_for_location:
         backup_location=default_location
     else:
-        backup_location = raw_input("Enter a location to save (or leave blank for default "+default_location+" ): ")
+        backup_location = raw_input("Enter a location to save (or leave blank for default "+default_location+"): ")
         if backup_location=="":
             backup_location=default_location
         if os.path.isdir(backup_location):
