@@ -130,7 +130,7 @@ if use_compression:
     make_tarfile(backbase+"/"+time+".tar.gz",backup_location)
     shutil.rmtree(backup_location)
 
-print "folder backed up to "+backup_location
+print "folder backed up to "+backbase+"/"+time+".tar.gz"
 
 # check for existence for version control file
 vc_file=backbase+"/backtrack.txt"
