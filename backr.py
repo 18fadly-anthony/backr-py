@@ -39,6 +39,17 @@ def query_yes_no(question):
             sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
 
+def get_comment():
+    has_comment=0
+    while(has_comment==0):
+        comment = raw_input("Enter a comment for this backup (or leave blank): ")
+        # make sure comment is a possible dir name
+        if "/" in comment:
+            print "comment cannot contain '/'"
+        else:
+            return comment
+            has_comment=1
+
 if prompt_for_compression:
     use_compression=query_yes_no("Use compression?")
 
@@ -70,16 +81,7 @@ print "will save to "+backup_location
 
 # comment for save:
 # prompt user for comment to save
-def get_comment():
-    has_comment=0
-    while(has_comment==0):
-        comment = raw_input("Enter a comment for this backup (or leave blank): ")
-        # make sure comment is a possible dir name
-        if "/" in comment:
-            print "comment cannot contain '/'"
-        else:
-            return comment
-            has_comment=1
+
 comment=get_comment()
 
 # set some varibles:
