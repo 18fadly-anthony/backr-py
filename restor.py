@@ -43,6 +43,14 @@ def main():
         data=pickle.load( open( vc_file, "rb" ))
         for i in range(0, len(data), 3):
             print "backup "+str((i/3)+1)+" in "+data[i+1][16:]
+        has_number=False
+        while not has_number:
+            backup_number=raw_input("Choose a number to restore from: ")
+            try:
+                backup_number=int(backup_number)
+                has_number=True
+            except ValueError:
+                print "that is not a number"
     else:
         print "backtrack file not found in "+backbase
 
