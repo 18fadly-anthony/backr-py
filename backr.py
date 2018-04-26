@@ -55,6 +55,7 @@ def make_tarfile(output_filename, source_dir):
          tar.add(source_dir, arcname=os.path.basename(source_dir))
 
 def main():
+    global use_compression
     if prompt_for_compression:
         use_compression=query_yes_no("Use compression?")
 
