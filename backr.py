@@ -50,6 +50,10 @@ def get_comment():
             return comment
             has_comment=1
 
+def make_tarfile(output_filename, source_dir):
+    with tarfile.open(output_filename, "w:gz") as tar:
+         tar.add(source_dir, arcname=os.path.basename(source_dir))
+
 if prompt_for_compression:
     use_compression=query_yes_no("Use compression?")
 
@@ -126,14 +130,11 @@ copy_tree(dir, backup_location)
 # if compression was set to true
     # compress all the files in that folder individually
 if use_compression:
-    def make_tarfile(output_filename, source_dir):
-        with tarfile.open(output_filename, "w:gz") as tar:
-            tar.add(source_dir, arcname=os.path.basename(source_dir))
     make_tarfile(backbase+"/"+time+".tar.gz",backup_location)
     shutil.rmtree(backup_location)
     print "folder backed up to "+backbase+"/"+time+".tar.gz"
-
-print "folder backed up to "+backup_location
+else:
+    print "folder backed up to "+backup_location
 
 # check for existence for version control file
 vc_file=backbase+"/backtrack.txt"
