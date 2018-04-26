@@ -10,7 +10,7 @@ import cPickle as pickle
 for i in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
        print "backr simple backup tool"
-       print "usage: backr.py [-c|--compress] [-h|--help]"
+       print "usage: backr.py [-h|--help] [-c|--compress] [-d|--default] "
        exit()
     if "-d" in sys.argv or "--default" in sys.argv:
         prompt_for_location=False
