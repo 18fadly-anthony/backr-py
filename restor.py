@@ -42,7 +42,7 @@ def main():
     if os.path.exists(vc_file):
         data=pickle.load( open( vc_file, "rb" ))
         for i in range(0, len(data), 3):
-            print data[i], data[i+1], data[i+2]
+            print "backup "+str((i/3)+1)+" in "+data[i+1][16:]
     else:
         print "backtrack file not found in "+backbase
 
