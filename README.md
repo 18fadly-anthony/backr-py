@@ -7,4 +7,4 @@
 ## ToDo
 
 1. Ability to restore from backup
-2. Encryption
+2. Fix code (def main)
