@@ -131,8 +131,9 @@ if use_compression:
             tar.add(source_dir, arcname=os.path.basename(source_dir))
     make_tarfile(backbase+"/"+time+".tar.gz",backup_location)
     shutil.rmtree(backup_location)
+    print "folder backed up to "+backbase+"/"+time+".tar.gz"
 
-print "folder backed up to "+backbase+"/"+time+".tar.gz"
+print "folder backed up to "+backup_location
 
 # check for existence for version control file
 vc_file=backbase+"/backtrack.txt"
