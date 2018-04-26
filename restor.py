@@ -3,6 +3,7 @@
 # backr restor tool in python
 
 import sys, os, hashlib
+import cPickle as pickle
 
 for i in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
@@ -33,6 +34,12 @@ def main():
     backup_location += "/"
     backup_location += basehash
     backbase=backup_location
+
+    vc_file=backbase+"/backtrack.txt"
+    if os.path.exists(vc_file):
+        data=pickle.load( open( vc_file, "rb" ))
+    else:
+        print "backtrack file not found in "+backbase
 
 if __name__ == "__main__":
     try:
