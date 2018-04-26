@@ -36,8 +36,13 @@ def main():
     backbase=backup_location
 
     vc_file=backbase+"/backtrack.txt"
+
+    print "listing backups..."
+    print
     if os.path.exists(vc_file):
         data=pickle.load( open( vc_file, "rb" ))
+        for i in range(0, len(data), 3):
+            print data[i], data[i+1], data[i+2]
     else:
         print "backtrack file not found in "+backbase
 
