@@ -21,7 +21,7 @@ git clone https://github.com/aidenholmes/backr-py
 
 cd backr-py
 
-ln -s (pwd)"/backr.py" ~/.local/bin/
+ln -s $(pwd)"/backr.py" ~/.local/bin/
 ```
 
 ## Usage
