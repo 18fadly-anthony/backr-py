@@ -41,6 +41,10 @@ backr.py
 ```
 rm ~/.local/bin/backr.py
 
+cd backr-py
+
+cd ..
+
 rm -rf backr-py
 
 ```
