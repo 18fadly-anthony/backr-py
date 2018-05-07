@@ -22,7 +22,7 @@ def main():
             backup_location = myfile.read()
     else:
         print ".backr-location file not found"
-        sys.exit(0)
+        sys.exit(1)
 
     hash = hashlib.sha1(dir.encode("UTF-8")).hexdigest()
     hash = hash[:7]
@@ -63,6 +63,9 @@ def main():
                 print "That is not an option."
     else:
         print "backtrack file not found in "+backbase
+        sys.exit(1)
+
+    print backup_number
 
 if __name__ == "__main__":
     try:
