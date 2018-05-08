@@ -143,19 +143,23 @@ def main():
     if not os.path.exists(vc_file):
         fw = open(vc_file,'wb')
         if not use_compression:
-            data = ["backup_number=1","backup_location="+backup_location,"compression="+str(use_compression)]
+            #data = ["backup_number=1","backup_location="+backup_location,"compression="+str(use_compression)]
+            data = [backup_location]
         else:
-            data = ["backup_number=1","backup_location="+backbase+"/"+time+".tar.gz","compression="+str(use_compression)]
+            #data = ["backup_number=1","backup_location="+backbase+"/"+time+".tar.gz","compression="+str(use_compression)]
+            data = [backbase+"/"+time+".tar.gz"]
         pickle.dump(data, fw)
         fw.close()
     # if it does exist
     else:
         data=pickle.load( open( vc_file, "rb" ))
-        backup_number = (len(data)/3)+1
+        #backup_number = (len(data)/3)+1
         if not use_compression:
-            data+=["backup_number="+str(backup_number),"backup_location="+backup_location,"compression="+str(use_compression)]
+            #data+=["backup_number="+str(backup_number),"backup_location="+backup_location,"compression="+str(use_compression)]
+            data+=[backup_location]
         else:
-            data+=["backup_number="+str(backup_number),"backup_location="+backbase+"/"+time+".tar.gz","compression="+str(use_compression)]
+            #data+=["backup_number="+str(backup_number),"backup_location="+backbase+"/"+time+".tar.gz","compression="+str(use_compression)]
+            data+=[backbase+"/"+time+".tar.gz"]
         fw = open(vc_file,'wb')
         pickle.dump(data, fw)
         fw.close()
