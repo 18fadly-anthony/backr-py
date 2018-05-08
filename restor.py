@@ -66,6 +66,9 @@ def main():
         sys.exit(1)
 
     print backup_number
+    for i in range(len(possible_backups)):
+        if str(backup_number) in possible_backups[i]:
+            print possible_backups[i]
 
 if __name__ == "__main__":
     try:
