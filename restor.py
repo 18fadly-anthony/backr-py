@@ -41,18 +41,16 @@ def main():
     print
     if os.path.exists(vc_file):
         data=pickle.load( open( vc_file, "rb" ))
-        possible_backups=[0]
-        for i in range(0, len(data), 3):
-            i_number=str((i/3)+1)
-            i_backup=data[i+1][16:]
-            print "backup "+i_number+" in "+i_backup #data[i+1][16:]
-            if not os.path.exists(i_backup):
+        possible_backups=["placeholder"]
+        for i in range(0, len(data)):
+            print "backup "+str(i)+" in "+data[i]
+            if not os.path.exists(data[i]):
                 print ("    backup deleted or missing!")
             else:
-                if possible_backups==[0]:
-                    possible_backups=[i_number]
+                if possible_backups==["placeholder"]:
+                    possible_backups=[i]
                 else:
-                    possible_backups+=[i_number]
+                    possible_backups+=[i]
         has_number=False
         while not has_number:
             backup_number=raw_input("Choose a number to restore from: ")
