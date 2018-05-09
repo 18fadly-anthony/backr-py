@@ -22,7 +22,6 @@ for i in range(len(sys.argv)):
     else:
         prompt_for_compression=True
 
-
 def query_yes_no(question):
     # http://stackoverflow.com/questions/3041986/ddg#3041990
     default=None
