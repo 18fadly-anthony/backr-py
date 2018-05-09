@@ -6,8 +6,8 @@ import os, datetime, hashlib, sys, tarfile, shutil
 from distutils.dir_util import copy_tree
 import cPickle as pickle
 
-# take args
 for i in range(len(sys.argv)):
+    # take args
     if "-h" in sys.argv or "--help" in sys.argv:
        print "backr simple backup tool"
        print "usage: backr.py [-h|--help] [-c|--compress] [-d|--default]"
@@ -22,8 +22,9 @@ for i in range(len(sys.argv)):
     else:
         prompt_for_compression=True
 
-# http://stackoverflow.com/questions/3041986/ddg#3041990
+
 def query_yes_no(question):
+    # http://stackoverflow.com/questions/3041986/ddg#3041990
     default=None
     valid = {"yes": True, "y": True, "ye": True,
              "no": False, "n": False}
