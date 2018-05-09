@@ -54,7 +54,7 @@ def main():
         has_number=False
         while not has_number:
             backup_number=raw_input("Choose a number to restore from: ")
-            if backup_number in possible_backups:
+            if backup_number in str(possible_backups):
                 backup_number=int(backup_number)
                 has_number=True
             else:
@@ -64,9 +64,6 @@ def main():
         sys.exit(1)
 
     print backup_number
-    for i in range(len(possible_backups)):
-        if str(backup_number) in possible_backups[i]:
-            print possible_backups[i]
 
 if __name__ == "__main__":
     try:
