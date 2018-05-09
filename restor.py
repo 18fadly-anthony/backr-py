@@ -40,7 +40,6 @@ def main():
     print "listing backups..."
     print
     if os.path.exists(vc_file):
-        global possible_backups
         data=pickle.load( open( vc_file, "rb" ))
         possible_backups=["placeholder"]
         for i in range(0, len(data)):
@@ -53,10 +52,8 @@ def main():
                 else:
                     possible_backups+=[i]
         has_number=False
-        print possible_backups
         while not has_number:
             backup_number=raw_input("Choose a number to restore from: ")
-            print possible_backups
             if backup_number in possible_backups:
                 backup_number=int(backup_number)
                 has_number=True
