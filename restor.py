@@ -63,7 +63,11 @@ def main():
         print "backtrack file not found in "+backbase
         sys.exit(1)
 
-    print backup_number
+    restore_from = data[backup_number]
+
+    restore_location = raw_input("Enter a location to restore to: ")
+    if os.path.isdir(restore_location):
+        print "Will restore to "+restore_location
 
 if __name__ == "__main__":
     try:
