@@ -53,12 +53,15 @@ def main():
                     possible_backups+=[i]
         has_number=False
         while not has_number:
-            backup_number=raw_input("Choose a number to restore from: ")
-            if backup_number in str(possible_backups):
-                backup_number=int(backup_number)
-                has_number=True
-            else:
-                print "That is not an option."
+            try:
+                backup_number=raw_input("Choose a number to restore from: ")
+                if backup_number in str(possible_backups):
+                    backup_number=int(backup_number)
+                    has_number=True
+                else:
+                    print "That is not an option."
+            except ValueError:
+                print "Enter a number."
     else:
         print "backtrack file not found in "+backbase
         sys.exit(1)
