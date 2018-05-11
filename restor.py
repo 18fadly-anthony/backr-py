@@ -68,9 +68,14 @@ def main():
 
     restore_from = data[backup_number]
 
-    restore_location = raw_input("Enter a location to restore to: ")
-    if os.path.isdir(restore_location):
-        print "Will restore to "+restore_location
+    has_restore_location = False
+    while not has_restore_location:
+        restore_location = raw_input("Enter a location to restore to: ")
+        if os.path.isdir(restore_location):
+            print "Will restore to "+restore_location
+            has_restore_location=True
+        else:
+            print restore_location+" does not exist"
 
 if __name__ == "__main__":
     try:
