@@ -3,6 +3,7 @@
 # backr restor tool in python
 
 import sys, os, hashlib
+from distutils.dir_util import copy_tree
 import cPickle as pickle
 
 for i in range(len(sys.argv)):
@@ -78,7 +79,12 @@ def main():
             print restore_location+" does not exist"
 
     if not ".tar.gz" in restore_from:
-        print restore_from +" is not compressed"
+        restore_location+="/"
+        restore_location+=basename
+        if not os.path.exists(restore_location):
+            os.makedirs(restore_location)
+        copy_tree(restore_from, restore_location)
+        print "Restored to "+restore_location
     else:
         print restore_from +" is compressed"
 
