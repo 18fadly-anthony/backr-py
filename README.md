@@ -21,11 +21,7 @@ git clone https://github.com/aidenholmes/backr-py
 
 cd backr-py
 
-ln -s $(pwd)"/backr.py" ~/.local/bin/
-
-# optional make ~/backrs for default backup location
-
-mkdir ~/backrs
+./install.sh
 ```
 
 ## Usage
