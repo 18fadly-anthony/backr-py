@@ -77,6 +77,11 @@ def main():
         else:
             print restore_location+" does not exist"
 
+    if not ".tar.gz" in restore_from:
+        print restore_from +" is not compressed"
+    else:
+        print restore_from +" is compressed"
+
 if __name__ == "__main__":
     try:
         main()
