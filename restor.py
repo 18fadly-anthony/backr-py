@@ -78,11 +78,11 @@ def main():
         else:
             print restore_location+" does not exist"
 
+    restore_location+="/"
+    restore_location+=basename
+    if not os.path.exists(restore_location):
+        os.makedirs(restore_location)
     if not ".tar.gz" in restore_from:
-        restore_location+="/"
-        restore_location+=basename
-        if not os.path.exists(restore_location):
-            os.makedirs(restore_location)
         copy_tree(restore_from, restore_location)
         print "Restored to "+restore_location
     else:
