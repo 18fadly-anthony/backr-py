@@ -40,15 +40,13 @@ def query_yes_no(question):
                              "(or 'y' or 'n').\n")
 
 def get_comment():
-    has_comment=0
-    while(has_comment==0):
+    while True:
         comment = raw_input("Enter a comment for this backup (or leave blank): ")
         # make sure comment is a possible dir name
         if "/" in comment:
             print "comment cannot contain '/'"
         else:
             return comment
-            has_comment=1
 
 def make_tarfile(output_filename, source_dir):
     with tarfile.open(output_filename, "w:gz") as tar:
