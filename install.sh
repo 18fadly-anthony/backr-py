@@ -1,5 +1,13 @@
 #!/bin/bash
 
-ln -s $(pwd)"/backr.py" ~/.local/bin/
+if [ ! -f ~/.local/bin/backr.py ]; then
+  ln -s $(pwd)"/backr.py" ~/.local/bin/
+fi
 
-mkdir ~/backrs
+if [ ! -f ~/.local/bin/restor.py ]; then
+  ln -s $(pwd)"/restor.py" ~/.local/bin/
+fi
+
+if [ ! -d ~/backrs ]; then
+  mkdir ~/backrs
+fi
