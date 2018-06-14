@@ -2,7 +2,7 @@
 
 # backr restor tool in python
 
-import sys, os, hashlib
+import sys, os, hashlib, tarfile, shutil
 from distutils.dir_util import copy_tree
 import cPickle as pickle
 
@@ -11,6 +11,12 @@ for i in range(len(sys.argv)):
        print "restor tool for backr"
        print "usage: backr.py [-h|--help]"
        exit()
+
+def decompress(input_filename, output_dir):
+    shutil.copyfile(input_filename, output_dir)
+    tar = tarfile.open(output_dir+"/"+filename, "r:gz")
+    tar.extractall()
+    tar.close()
 
 def main():
     # set veriables
@@ -86,7 +92,7 @@ def main():
         copy_tree(restore_from, restore_location)
         print "Restored to "+restore_location
     else:
-        print restore_from +" is compressed"
+        shutil.copyfile(restore_from, restore_location+"/"+os.path.basename(restore_from))
 
 if __name__ == "__main__":
     try:
