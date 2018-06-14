@@ -88,6 +88,8 @@ def main():
     else:
         shutil.copyfile(restore_from, restore_location+"/"+os.path.basename(restore_from))
 
+    print "Restored to " + restore_location
+
 if __name__ == "__main__":
     try:
         main()
