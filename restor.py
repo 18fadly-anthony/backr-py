@@ -84,7 +84,6 @@ def main():
         os.makedirs(restore_location)
     if not ".tar.gz" in restore_from:
         copy_tree(restore_from, restore_location)
-        print "Restored to "+restore_location
     else:
         shutil.copyfile(restore_from, restore_location+"/"+os.path.basename(restore_from))
 
