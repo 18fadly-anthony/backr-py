@@ -18,8 +18,14 @@
 git clone https://github.com/aidenholmes/backr-py
 
 cd backr-py
+```
 
-./install.sh
+put `backr.py` and `restor.py` in PATH, eg:
+
+```
+ln -s ~/backr-py/backr.py ~/.local/bin
+
+ln -s ~/backr-py/restor.py ~/.local/bin
 ```
 
 ## Usage
