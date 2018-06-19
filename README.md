@@ -1,5 +1,7 @@
 # backy-py
 
+a simple backup tool
+
 ## Features
 
 - Store different backups in different locations
