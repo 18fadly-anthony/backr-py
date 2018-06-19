@@ -2,6 +2,8 @@
 
 a simple backup tool
 
+![logo](logo.png)
+
 ## Features
 
 - Store different backups in different locations
