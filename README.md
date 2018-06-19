@@ -1,9 +1,5 @@
 # backy-py
 
-## ToDo
-
-1. Finish restor.py
-
 ## Features
 
 - Store different backups in different locations
@@ -33,18 +29,11 @@ ln -s ~/backr-py/restor.py ~/.local/bin
 ```
 cd /foo/bar
 
-backr.py
+backr.py # to backup
+
+restor.py # to restore
 ```
 
 ## Removal
 
-```
-rm ~/.local/bin/backr.py
-
-cd backr-py
-
-cd ..
-
-rm -rf backr-py
-
-```
+Remove backr.py and restor.py from PATH then delete the repository
