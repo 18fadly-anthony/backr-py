@@ -9,7 +9,7 @@ import cPickle as pickle
 for i in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
        print "restor tool for backr"
-       print "usage: backr.py [-h|--help]"
+       print "usage: restor.py [-h|--help]"
        exit()
 
 def main():
