@@ -4,6 +4,8 @@ a simple backup tool
 
 ![logo](logo.png)
 
+[![asciicast](https://asciinema.org/a/sNBDRobpOUBwTHNr2G4xBEIUM.svg)](https://asciinema.org/a/sNBDRobpOUBwTHNr2G4xBEIUM)
+
 ## Features
 
 - Store different backups in different locations
