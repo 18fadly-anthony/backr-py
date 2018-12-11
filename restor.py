@@ -52,6 +52,12 @@ def main():
                     possible_backups=[i]
                 else:
                     possible_backups+=[i]
+
+        # print most recent available backup
+        print
+        print "most recent available backup:"
+        print data[possible_backups[-1]]
+
         has_number=False
         while not has_number:
             try:
