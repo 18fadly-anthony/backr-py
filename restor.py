@@ -10,6 +10,7 @@ for i in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
        print "restor tool for backr"
        print "usage: restor.py [-h|--help]"
+       print "[-h|--help] - print this help"
        exit()
 
 def main():
@@ -57,6 +58,7 @@ def main():
         print
         print "most recent available backup:"
         print data[possible_backups[-1]]
+        print
 
         has_number=False
         while not has_number:
