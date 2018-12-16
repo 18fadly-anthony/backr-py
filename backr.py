@@ -82,8 +82,11 @@ def main():
                 f.write(backup_location)
                 f.close()
             else:
-                print backup_location + " does not exist"
-                exit()
+                if backup_location==default_location:
+                    os.makedirs(backup_location)
+                else:
+                    print backup_location + " does not exist"
+                    exit()
     print "will save to "+backup_location
 
     # comment for save:
