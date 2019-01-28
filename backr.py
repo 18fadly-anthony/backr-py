@@ -2,7 +2,12 @@
 
 # backr backup tool in python
 
-import os, datetime, hashlib, sys, tarfile, shutil
+import os
+import datetime
+import hashlib
+import sys
+import tarfile
+import shutil
 from distutils.dir_util import copy_tree
 import cPickle as pickle
 
@@ -119,7 +124,7 @@ def main():
 
     backup_location += "/"
     backup_location += basehash
-    backbase=backup_location
+    backbase = backup_location
 
     # mkdir backup folder
 
@@ -138,16 +143,16 @@ def main():
     # if compression was set to true
         # compress all the files in that folder individually
     if use_compression:
-        make_tarfile(backbase+"/"+time+".tar.gz",backup_location)
+        make_tarfile(backbase+"/"+time+".tar.gz", backup_location)
         shutil.rmtree(backup_location)
         print "folder backed up to "+backbase+"/"+time+".tar.gz"
     else:
         print "folder backed up to "+backup_location
 
     # check for existence for version control file
-    vc_file=backbase+"/backtrack.txt"
+    vc_file = backbase+"/backtrack.txt"
     if not os.path.exists(vc_file):
-        fw = open(vc_file,'wb')
+        fw = open(vc_file, 'wb')
         if not use_compression:
             data = [backup_location]
         else:
@@ -156,13 +161,13 @@ def main():
         fw.close()
     # if it does exist
     else:
-        data=pickle.load( open( vc_file, "rb" ))
+        data = pickle.load(open(vc_file, "rb"))
         #backup_number = (len(data)/3)+1
         if not use_compression:
-            data+=[backup_location]
+            data += [backup_location]
         else:
-            data+=[backbase+"/"+time+".tar.gz"]
-        fw = open(vc_file,'wb')
+            data += [backbase+"/"+time+".tar.gz"]
+        fw = open(vc_file, 'wb')
         pickle.dump(data, fw)
         fw.close()
 
