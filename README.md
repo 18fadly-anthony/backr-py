@@ -20,9 +20,9 @@ a simple backup tool
 
 1. ~~change license to apache2~~
 
-2. indentation / various small issues found in emacs
+2. ~~indentation / various small issues found in emacs~~
 
-3. take args using module
+3. ~~take args using module~~
 
 4. do not except keybord inturrupt in if name
 
@@ -37,6 +37,8 @@ a simple backup tool
 9. restor —clean feature to remove old backups from backup list
 
 10. use Makefile to compile files in installation
+
+11. do less in main() (keep in mind during other todos)
 
 ## Installation
 
