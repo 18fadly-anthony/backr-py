@@ -18,7 +18,7 @@ a simple backup tool
 
 ## ToDo
 
-1. change license to apache2
+1. ~~change license to apache2~~
 
 2. indentation / various small issues found in emacs
 
