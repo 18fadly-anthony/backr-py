@@ -106,11 +106,11 @@ def main():
     basename = os.path.basename(dir)
     #print basename
     # set current time in a possible dir format
-    time=basename
-    time+="-"
-    time+=datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S')
-    time+="-"
-    time+=comment
+    time = basename
+    time += "-"
+    time += datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S')
+    time += "-"
+    time += comment
     #print time
     # generate a hash of the current dir
     hash = hashlib.sha1(dir.encode("UTF-8")).hexdigest()

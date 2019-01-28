@@ -18,7 +18,7 @@ a simple backup tool
 
 ## ToDo
 
-1. create ~/backrs automatically
+1. ~~create ~/backrs automatically~~
 
 2. get slug comment some other way than just rejecting “/“
 
