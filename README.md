@@ -16,6 +16,26 @@ a simple backup tool
 
 - Delete old backups to save space without affecting more recent ones
 
+## ToDo
+
+1. change license to apache2
+
+2. indentation / various small issues found in emacs
+
+3. take args using module
+
+4. do not except keybord inturrupt in if name
+
+5. create ~/backrs automatically
+
+6. get slug comment some other way than just rejecting “/“
+
+7. prefer args to prompting the user
+
+8. use separate variables for backr_location
+
+9. restor —clean feature to remove old backups
+
 ## Installation
 
 ```
