@@ -34,7 +34,9 @@ a simple backup tool
 
 8. use separate variables for backr_location
 
-9. restor —clean feature to remove old backups
+9. restor —clean feature to remove old backups from backup list
+
+10. use Makefile to compile files in installation
 
 ## Installation
 
