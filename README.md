@@ -18,19 +18,17 @@ a simple backup tool
 
 ## ToDo
 
-1. ~~create ~/backrs automatically~~
+1. rename hash and dir variables
 
-2. get slug comment some other way than just rejecting “/“
+2. prefer args to prompting the user
 
-3. prefer args to prompting the user
+3. use separate variables for backr_location
 
-4. use separate variables for backr_location
+4. restor —clean feature to remove old backups from backup list
 
-5. restor —clean feature to remove old backups from backup list
+5. use Makefile to compile files in installation
 
-6. use Makefile to compile files in installation
-
-7. do less in main() (keep in mind during other todos)
+6. do less in main() (keep in mind during other todos)
 
 ## Installation
 
