@@ -18,27 +18,19 @@ a simple backup tool
 
 ## ToDo
 
-1. ~~change license to apache2~~
+1. create ~/backrs automatically
 
-2. ~~indentation / various small issues found in emacs~~
+2. get slug comment some other way than just rejecting “/“
 
-3. ~~take args using module~~
+3. prefer args to prompting the user
 
-4. do not except keybord inturrupt in if name
+4. use separate variables for backr_location
 
-5. create ~/backrs automatically
+5. restor —clean feature to remove old backups from backup list
 
-6. get slug comment some other way than just rejecting “/“
+6. use Makefile to compile files in installation
 
-7. prefer args to prompting the user
-
-8. use separate variables for backr_location
-
-9. restor —clean feature to remove old backups from backup list
-
-10. use Makefile to compile files in installation
-
-11. do less in main() (keep in mind during other todos)
+7. do less in main() (keep in mind during other todos)
 
 ## Installation
 
