@@ -9,25 +9,25 @@ import cPickle as pickle
 for i in range(len(sys.argv)):
     # take args
     if "-h" in sys.argv or "--help" in sys.argv:
-       print "backr simple backup tool"
-       print "usage: backr.py [-h|--help] [-c|--compress] [-d|--default]"
-       print "[-h|--help] - print this help"
-       print "[-c|--compress] - use compression, do not prompt user"
-       print "[-d|--default] - backup to default location (~/backrs, do not prompt user"
-       sys.exit(0)
+        print "backr simple backup tool"
+        print "usage: backr.py [-h|--help] [-c|--compress] [-d|--default]"
+        print "[-h|--help] - print this help"
+        print "[-c|--compress] - use compression, do not prompt user"
+        print "[-d|--default] - backup to default location (~/backrs, do not prompt user"
+        sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
-        prompt_for_location=False
+        prompt_for_location = False
     else:
-        prompt_for_location=True
+        prompt_for_location = True
     if "-c" in sys.argv or "--compress" in sys.argv:
-        use_compression=True
-        prompt_for_compression=False
+        use_compression = True
+        prompt_for_compression = False
     else:
-        prompt_for_compression=True
+        prompt_for_compression = True
 
 def query_yes_no(question):
     # http://stackoverflow.com/questions/3041986/ddg#3041990
-    default=None
+    default = None
     valid = {"yes": True, "y": True, "ye": True,
              "no": False, "n": False}
     prompt = " [y/n] "
@@ -53,17 +53,17 @@ def get_comment():
 
 def make_tarfile(output_filename, source_dir):
     with tarfile.open(output_filename, "w:gz") as tar:
-         tar.add(source_dir, arcname=os.path.basename(source_dir))
+        tar.add(source_dir, arcname=os.path.basename(source_dir))
 
 def main():
     global use_compression
     if prompt_for_compression:
-        use_compression=query_yes_no("Use compression?")
+        use_compression = query_yes_no("Use compression?")
 
     # determining save location:
     # check for saveto file
     home = os.path.expanduser("~")
-    default_location=home+"/backrs"
+    default_location = home+"/backrs"
     if os.path.isfile(".backr-location"):
         with open('.backr-location', 'r') as myfile:
             backup_location = myfile.read()
@@ -71,18 +71,18 @@ def main():
         # if exists, use it, else ask user to create
     else:
         if not prompt_for_location:
-            backup_location=default_location
+            backup_location = default_location
         else:
             backup_location = raw_input("Enter a location to save (or leave blank for default "+default_location+"): ")
-            if backup_location=="":
-                backup_location=default_location
+            if backup_location == "":
+                backup_location = default_location
             if os.path.isdir(backup_location):
                 # add this to new .backr location file
-                f = open( '.backr-location', 'w' )
+                f = open('.backr-location', 'w')
                 f.write(backup_location)
                 f.close()
             else:
-                if backup_location==default_location:
+                if backup_location == default_location:
                     os.makedirs(backup_location)
                 else:
                     print backup_location + " does not exist"
@@ -92,13 +92,13 @@ def main():
     # comment for save:
     # prompt user for comment to save
 
-    comment=get_comment()
+    comment = get_comment()
 
     # set some varibles:
-    dir=os.getcwd()
+    dir = os.getcwd()
     #print dir
     # basename folder
-    basename=os.path.basename(dir)
+    basename = os.path.basename(dir)
     #print basename
     # set current time in a possible dir format
     time=basename
