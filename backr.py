@@ -100,10 +100,10 @@ def main():
     comment = get_comment()
 
     # set some varibles:
-    dir = os.getcwd()
+    cwd = os.getcwd()
     #print dir
     # basename folder
-    basename = os.path.basename(dir)
+    basename = os.path.basename(cwd)
     #print basename
     # set current time in a possible dir format
     time = basename
@@ -113,7 +113,7 @@ def main():
     time += comment
     #print time
     # generate a hash of the current dir
-    hash = hashlib.sha1(dir.encode("UTF-8")).hexdigest()
+    hash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()
     hash = hash[:7]
 
     basehash = basename
@@ -138,7 +138,7 @@ def main():
         os.makedirs(backup_location)
 
     # cp -r this folder that folder
-    copy_tree(dir, backup_location)
+    copy_tree(cwd, backup_location)
 
     # if compression was set to true
         # compress all the files in that folder individually
