@@ -79,26 +79,33 @@ def main():
     if os.path.isfile(".backr-location"):
         with open('.backr-location', 'r') as myfile:
             backup_location = myfile.read()
-    # else prompt user for backup_location, then check if it exists
-        # if exists, use it, else ask user to create
+
+    # If .backr_location does not exit, prompt the user for a location and save
+    # it to the file, later this should be done entirely as an argument to make
+    # backr more portable
     else:
         if not prompt_for_location:
             backup_location = default_location
         else:
             backup_location = raw_input("Enter a location to save (or leave blank for default "+default_location+"): ")
+
+            # If the user leaves the location blank, use the default (~/backrs)
             if backup_location == "":
                 backup_location = default_location
+
+            # If the user-provided location exists, write it to the file
             if os.path.isdir(backup_location):
-                # add this to new .backr location file
                 f = open('.backr-location', 'w')
                 f.write(backup_location)
                 f.close()
             else:
+
+                # Create the folder only if it is ~/backrs
                 if backup_location == default_location:
                     os.makedirs(backup_location)
                 else:
                     print backup_location + " does not exist"
-                    exit()
+                    sys.exit(1)
     print "will save to "+backup_location
 
     # comment for save:
