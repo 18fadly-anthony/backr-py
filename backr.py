@@ -113,12 +113,12 @@ def main():
     time += comment
     #print time
     # generate a hash of the current dir
-    hash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()
-    hash = hash[:7]
+    qhash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()
+    qhash = qhash[:7]
 
     basehash = basename
     basehash += "-"
-    basehash += hash
+    basehash += qhash
 
     # backup folder name will be /location/basename-hash/time/contents
 
