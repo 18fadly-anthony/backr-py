@@ -106,19 +106,12 @@ def main():
     basename = os.path.basename(cwd)
     #print basename
     # set current time in a possible dir format
-    time = basename
-    time += "-"
-    time += datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S')
-    time += "-"
-    time += comment
-    #print time
-    # generate a hash of the current dir
-    qhash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()
-    qhash = qhash[:7]
+    time = basename + "-" + datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S') + "-" + comment
 
-    basehash = basename
-    basehash += "-"
-    basehash += qhash
+    # generate a hash of the current dir
+    qhash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()[:7]
+
+    basehash = basename + "-" + qhash
 
     # backup folder name will be /location/basename-hash/time/contents
 
