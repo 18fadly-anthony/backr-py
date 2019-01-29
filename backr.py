@@ -11,8 +11,8 @@ import shutil
 from distutils.dir_util import copy_tree
 import cPickle as pickle
 
+# Take Arguments
 for i in range(len(sys.argv)):
-    # take args
     if "-h" in sys.argv or "--help" in sys.argv:
         print "backr simple backup tool"
         print "usage: backr.py [-h|--help] [-c|--compress] [-d|--default]"
@@ -30,8 +30,9 @@ for i in range(len(sys.argv)):
     else:
         prompt_for_compression = True
 
+# Define a function for asking the user yes or no questions
+# Taken from: http://stackoverflow.com/questions/3041986/ddg#3041990
 def query_yes_no(question):
-    # http://stackoverflow.com/questions/3041986/ddg#3041990
     default = None
     valid = {"yes": True, "y": True, "ye": True,
              "no": False, "n": False}
@@ -47,26 +48,32 @@ def query_yes_no(question):
             sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
 
+# Define a function for asking the user for a comment
+# This comment will be part of a directory name
+# In UNIX a filename can contain everything except for "/" or NULL
+# And we don't have to worry about NULL because this will be appended to the date
 def get_comment():
     while True:
         comment = raw_input("Enter a comment for this backup (or leave blank): ")
-        # make sure comment is a possible dir name
         if "/" in comment:
             print "comment cannot contain '/'"
         else:
             return comment
 
+# Define a function to make a tarball, used for the compression feature
 def make_tarfile(output_filename, source_dir):
     with tarfile.open(output_filename, "w:gz") as tar:
         tar.add(source_dir, arcname=os.path.basename(source_dir))
 
+# Main Function
 def main():
+    # use_compression was defined by an argument in the initial for loop
     global use_compression
     if prompt_for_compression:
         use_compression = query_yes_no("Use compression?")
 
-    # determining save location:
-    # check for saveto file
+    # Determining save location:
+    # Check for .backr_location file with stores save location after first run
     home = os.path.expanduser("~")
     default_location = home+"/backrs"
     if os.path.isfile(".backr-location"):
