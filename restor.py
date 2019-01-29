@@ -9,7 +9,7 @@ import shutil
 from distutils.dir_util import copy_tree
 import cPickle as pickle
 
-for i in range(len(sys.argv)):
+for q in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
         print "restor tool for backr"
         print "usage: restor.py [-h|--help]"
@@ -17,9 +17,9 @@ for i in range(len(sys.argv)):
         exit()
 
 def main():
-    # set veriables
-    dir = os.getcwd()
-    basename = os.path.basename(dir)
+    # set variables
+    cwd = os.getcwd()
+    basename = os.path.basename(cwd)
 
     # get backup location
     if os.path.isfile(".backr-location"):
@@ -29,12 +29,9 @@ def main():
         print ".backr-location file not found"
         sys.exit(1)
 
-    hash = hashlib.sha1(dir.encode("UTF-8")).hexdigest()
-    hash = hash[:7]
+    qhash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()[:7]
 
-    basehash = basename
-    basehash += "-"
-    basehash += hash
+    basehash = basename + "-" + qhash
 
     backup_location += "/"
     backup_location += basehash
