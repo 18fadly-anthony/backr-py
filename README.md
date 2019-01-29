@@ -18,7 +18,7 @@ a simple backup tool
 
 ## ToDo
 
-1. rename hash and dir variables
+1. ~~rename hash and dir variables~~
 
 2. prefer args to prompting the user
 
