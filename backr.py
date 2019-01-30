@@ -106,31 +106,34 @@ def main():
                 else:
                     print backup_location + " does not exist"
                     sys.exit(1)
+
+    # Output
     print "will save to "+backup_location
 
-    # comment for save:
-    # prompt user for comment to save
-
+    # Get Comment
     comment = get_comment()
 
-    # set some varibles:
+    # Set some varibles:
+    # Set current working directory
     cwd = os.getcwd()
-    #print dir
-    # basename folder
+
+    # Set basename directory variable
     basename = os.path.basename(cwd)
-    #print basename
-    # set current time in a possible dir format
+
+    # Set current time in a possible dir format
     time = basename + "-" + datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S') + "-" + comment
 
-    # generate a hash of the current dir
+    # Generate a hash of the current dir
     qhash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()[:7]
 
+    # Set basehash var to basename and hash
     basehash = basename + "-" + qhash
 
-    # backup folder name will be /location/basename-hash/time/contents
+    # Backup folder name will be /location/basename-hash/time
+    # Add basehash to backup_location
+    backup_location += "/" + basehash
 
-    backup_location += "/"
-    backup_location += basehash
+    # We'll need a variable set to backup_location at the point later
     backbase = backup_location
 
     # mkdir backup folder
