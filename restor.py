@@ -30,11 +30,7 @@ def main():
         sys.exit(1)
 
     qhash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()[:7]
-
-    basehash = basename + "-" + qhash
-
-    backup_location += "/"
-    backup_location += basehash
+    backup_location += "/" + basename + "-" + qhash
     backbase = backup_location
 
     vc_file = backbase+"/backtrack.txt"
