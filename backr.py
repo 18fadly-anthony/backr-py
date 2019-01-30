@@ -151,11 +151,12 @@ def main():
     if not os.path.exists(backup_location):
         os.makedirs(backup_location)
 
-    # cp -r this folder that folder
+    # This line does the actual backup, it copies the current directory to the backup location
     copy_tree(cwd, backup_location)
 
-    # if compression was set to true
-        # compress all the files in that folder individually
+    # If use_compression was set, make a tarball of the backup
+    # Then delete the original backup, then output that folder was backed up
+    # Output varies depending on whether or not it was compressed
     if use_compression:
         make_tarfile(backbase+"/"+time+".tar.gz", backup_location)
         shutil.rmtree(backup_location)
@@ -163,8 +164,13 @@ def main():
     else:
         print "folder backed up to "+backup_location
 
-    # check for existence for version control file
+    # We use a file called backtrack.txt to keep track of how many backups
+    # there are and their locations, this is necessary for restor.py
+    # It is stored in the backbase, eg ~/backrs/basename-hash
     vc_file = backbase+"/backtrack.txt"
+
+    # If the file does not exist we create it using pickle
+    # We only write the backup location or, if compressed, the tarball location
     if not os.path.exists(vc_file):
         fw = open(vc_file, 'wb')
         if not use_compression:
@@ -173,10 +179,10 @@ def main():
             data = [backbase+"/"+time+".tar.gz"]
         pickle.dump(data, fw)
         fw.close()
-    # if it does exist
+
+    # If backtrack.txt already exists we use pickle to set its contents to the data var which we will add to
     else:
         data = pickle.load(open(vc_file, "rb"))
-        #backup_number = (len(data)/3)+1
         if not use_compression:
             data += [backup_location]
         else:
@@ -185,6 +191,7 @@ def main():
         pickle.dump(data, fw)
         fw.close()
 
+# Use the except KeyboardInterrupt on main trick to allow the user to C-c anytime
 if __name__ == "__main__":
     try:
         main()
