@@ -136,14 +136,18 @@ def main():
     # We'll need a variable set to backup_location at the point later
     backbase = backup_location
 
-    # mkdir backup folder
-
+    # At this point we know the save location like ~/backrs exists
+    # We need to create the folder specifically for this folder
+    # This creates ~/backrs/basename-hash
     if not os.path.exists(backup_location):
         os.makedirs(backup_location)
 
-    backup_location += "/"
-    backup_location += time
+    # At time to backup_location to create a folder for this specific backup
+    # backup_location is now, for example ~/backrs/basename-hash/basename-time-comment
+    # Remember that "time" variable contains basename-time-comment
+    backup_location += "/" + time
 
+    # Create the basename-time-comment directory
     if not os.path.exists(backup_location):
         os.makedirs(backup_location)
 
