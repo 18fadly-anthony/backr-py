@@ -18,17 +18,9 @@ a simple backup tool
 
 ## ToDo
 
-1. ~~rename hash and dir variables~~
-
-2. prefer args to prompting the user
-
-3. use separate variables for backr_location
-
-4. restor —clean feature to remove old backups from backup list
-
-5. use Makefile to compile files in installation
-
-6. do less in main() (keep in mind during other todos)
+1. do less in main()
+2. use Makefile to compile files in installation
+3. restor —clean feature to remove old backups from backup list
 
 ## Installation
 
