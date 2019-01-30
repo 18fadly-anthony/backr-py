@@ -16,12 +16,6 @@ a simple backup tool
 
 - Delete old backups to save space without affecting more recent ones
 
-## ToDo
-
-1. do less in main()
-2. use Makefile to compile files in installation
-3. restor —clean feature to remove old backups from backup list
-
 ## Installation
 
 ```
