@@ -6,10 +6,6 @@ a simple backup tool
 
 ![logo](logo.png)
 
-## Example: backuping and and restoring a directory's contents with backr
-
-[![asciicast](https://asciinema.org/a/sNBDRobpOUBwTHNr2G4xBEIUM.svg)](https://asciinema.org/a/sNBDRobpOUBwTHNr2G4xBEIUM)
-
 ## Features
 
 - Store different backups in different locations
