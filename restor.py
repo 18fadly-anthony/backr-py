@@ -53,7 +53,10 @@ def main():
         # print most recent available backup
         print
         print "most recent available backup:"
-        print data[possible_backups[-1]]
+        try:
+            print data[possible_backups[-1]]
+        except:
+            print "no possible backups"
         print
 
         has_number = False
