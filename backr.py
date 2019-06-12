@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+# Copyright (c) 2019 Aiden Holmes (aidenholmes@teknik.io)
+# This program is licensed under the Apache License
+# You are free to copy, modify, and redistribute the code.
+# See LICENSE file.
+
 # backr backup tool in python
 
 import os
