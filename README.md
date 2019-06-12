@@ -1,7 +1,5 @@
 # backy-py
 
-## [MOVING FROM GITHUB TO TEKNIK](https://git.teknik.io/aidenholmes/backr-py)
-
 a simple backup tool
 
 ![logo](logo.png)
