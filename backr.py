@@ -14,16 +14,16 @@ import sys
 import tarfile
 import shutil
 from distutils.dir_util import copy_tree
-import cPickle as pickle
+import pickle as pickle
 
 # Take Arguments
 for i in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
-        print "backr simple backup tool"
-        print "usage: backr.py [-h|--help] [-c|--compress] [-d|--default]"
-        print "[-h|--help] - print this help"
-        print "[-c|--compress] - use compression, do not prompt user"
-        print "[-d|--default] - backup to default location (~/backrs, do not prompt user"
+        print("backr simple backup tool")
+        print("usage: backr.py [-h|--help] [-c|--compress] [-d|--default]")
+        print("[-h|--help] - print this help")
+        print("[-c|--compress] - use compression, do not prompt user")
+        print("[-d|--default] - backup to default location (~/backrs, do not prompt user")
         sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
         prompt_for_location = False
@@ -44,7 +44,7 @@ def query_yes_no(question):
     prompt = " [y/n] "
     while True:
         sys.stdout.write(question + prompt)
-        choice = raw_input().lower()
+        choice = input().lower()
         if default is not None and choice == '':
             return valid[default]
         elif choice in valid:
@@ -59,9 +59,9 @@ def query_yes_no(question):
 # And we don't have to worry about NULL because this will be appended to the date
 def get_comment():
     while True:
-        comment = raw_input("Enter a comment for this backup (or leave blank): ")
+        comment = input("Enter a comment for this backup (or leave blank): ")
         if "/" in comment:
-            print "comment cannot contain '/'"
+            print("comment cannot contain '/'")
         else:
             return comment
 
@@ -92,7 +92,7 @@ def main():
         if not prompt_for_location:
             backup_location = default_location
         else:
-            backup_location = raw_input("Enter a location to save (or leave blank for default "+default_location+"): ")
+            backup_location = input("Enter a location to save (or leave blank for default "+default_location+"): ")
 
             # If the user leaves the location blank, use the default (~/backrs)
             if backup_location == "":
@@ -109,11 +109,11 @@ def main():
                 if backup_location == default_location:
                     os.makedirs(backup_location)
                 else:
-                    print backup_location + " does not exist"
+                    print(backup_location + " does not exist")
                     sys.exit(1)
 
     # Output
-    print "will save to "+backup_location
+    print("will save to "+backup_location)
 
     # Get Comment
     comment = get_comment()
@@ -165,9 +165,9 @@ def main():
     if use_compression:
         make_tarfile(backbase+"/"+time+".tar.gz", backup_location)
         shutil.rmtree(backup_location)
-        print "folder backed up to "+backbase+"/"+time+".tar.gz"
+        print("folder backed up to "+backbase+"/"+time+".tar.gz")
     else:
-        print "folder backed up to "+backup_location
+        print("folder backed up to "+backup_location)
 
     # We use a file called backtrack.txt to keep track of how many backups
     # there are and their locations, this is necessary for restor.py
@@ -201,6 +201,6 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print
-        print "exit"
+        print()
+        print("exit")
         sys.exit(0)
