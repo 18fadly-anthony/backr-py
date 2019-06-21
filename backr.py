@@ -13,8 +13,8 @@ import hashlib
 import sys
 import tarfile
 import shutil
+import pickle
 from distutils.dir_util import copy_tree
-import pickle as pickle
 
 # Take Arguments
 for i in range(len(sys.argv)):
