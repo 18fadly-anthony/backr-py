@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Copyright (c) 2019 Aiden Holmes (aidenholmes@teknik.io)
 # This program is licensed under the Apache License 2.0
