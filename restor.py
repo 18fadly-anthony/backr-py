@@ -11,8 +11,8 @@ import sys
 import os
 import hashlib
 import shutil
+import pickle
 from distutils.dir_util import copy_tree
-import pickle as pickle
 
 for q in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
