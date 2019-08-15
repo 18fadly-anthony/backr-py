@@ -58,9 +58,9 @@ def main():
         # print most recent available backup
         print()
         print("most recent available backup:")
-        try:
+        if isinstance(possible_backups[-1], int):
             print(data[possible_backups[-1]])
-        except:
+        else:
             print("no possible backups")
         print()
 
