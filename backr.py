@@ -23,7 +23,7 @@ for i in range(len(sys.argv)):
         print("usage: backr.py [-h|--help] [-c|--compress] [-d|--default]")
         print("[-h|--help] - print this help")
         print("[-c|--compress] - use compression, do not prompt user")
-        print("[-d|--default] - backup to default location (~/backrs, do not prompt user")
+        print("[-d|--default] - backup to default location (~/backrs, do not prompt user)")
         sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
         prompt_for_location = False
