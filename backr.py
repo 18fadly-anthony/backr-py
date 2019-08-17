@@ -25,6 +25,7 @@ for i in range(len(sys.argv)):
         print("[-c|--compress] - use compression")
         print("[-n|--no-compress] - do not use compression")
         print("[-d|--default] - backup to default location, ~/backrs")
+        print("[-w|--no-comment] - do not prompt for comment")
         sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
         prompt_for_location = False
@@ -38,6 +39,10 @@ for i in range(len(sys.argv)):
         prompt_for_compression = False
     else:
         prompt_for_compression = True
+    if "-w" in sys.argv or "--no-comment" in sys.argv:
+        prompt_for_comment = False
+    else:
+        prompt_for_comment = True
 
 # Define a function for asking the user yes or no questions
 # Taken from: http://stackoverflow.com/questions/3041986/ddg#3041990
@@ -120,7 +125,10 @@ def main():
     print("will save to "+backup_location)
 
     # Get Comment
-    comment = get_comment()
+    if prompt_for_comment:
+        comment = get_comment()
+    else:
+        comment = ""
 
     # Set some varibles:
     # Set current working directory
