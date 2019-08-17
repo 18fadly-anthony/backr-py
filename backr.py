@@ -98,19 +98,19 @@ def main():
             if backup_location == "":
                 backup_location = default_location
 
-            # If the user-provided location exists, write it to the file
-            if os.path.isdir(backup_location):
-                f = open('.backr-location', 'w')
-                f.write(backup_location)
-                f.close()
-            else:
+        # If the user-provided location exists, write it to the file
+        if os.path.isdir(backup_location):
+            f = open('.backr-location', 'w')
+            f.write(backup_location)
+            f.close()
+        else:
 
-                # Create the folder only if it is ~/backrs
-                if backup_location == default_location:
-                    os.makedirs(backup_location)
-                else:
-                    print(backup_location + " does not exist")
-                    sys.exit(1)
+             # Create the folder only if it is ~/backrs
+             if backup_location == default_location:
+                 os.makedirs(backup_location)
+             else:
+                 print(backup_location + " does not exist")
+                 sys.exit(1)
 
     # Output
     print("will save to "+backup_location)
