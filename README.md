@@ -49,3 +49,27 @@ rm ~/.local/bin/restor.py
 
 rm -rf ~/backr-py/
 ```
+
+## Scheduling Backups with Cron
+
+1. Backup directory manually to set backr location
+
+```
+cd /foo/bar
+
+backr.py
+```
+
+2. Add command with `crontab -e`
+
+```
+# add this to crontab:
+
+@reboot cd /foo/bar; /home/user/.local/bin/backr.py -n -w
+```
+
+3. Change `@reboot` to your desired schedule
+
+4. Change `/home/user/.local/bin/backr.py` to your backr.py path
+
+5. Change `-n` to `-c` if you want to use compression
