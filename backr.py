@@ -22,8 +22,9 @@ for i in range(len(sys.argv)):
         print("backr simple backup tool")
         print("usage: backr.py [-h|--help] [-c|--compress] [-d|--default]")
         print("[-h|--help] - print this help")
-        print("[-c|--compress] - use compression, do not prompt user")
-        print("[-d|--default] - backup to default location (~/backrs, do not prompt user)")
+        print("[-c|--compress] - use compression")
+        print("[-n|--no-compress] - do not use compression")
+        print("[-d|--default] - backup to default location, ~/backrs")
         sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
         prompt_for_location = False
@@ -31,6 +32,9 @@ for i in range(len(sys.argv)):
         prompt_for_location = True
     if "-c" in sys.argv or "--compress" in sys.argv:
         use_compression = True
+        prompt_for_compression = False
+    elif "-n" in sys.argv or "--no-compress" in sys.argv:
+        use_compression = False
         prompt_for_compression = False
     else:
         prompt_for_compression = True
