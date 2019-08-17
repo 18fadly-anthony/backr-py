@@ -40,4 +40,12 @@ restor.py # to restore
 
 ## Removal
 
-Remove backr.py and restor.py from PATH then delete the repository
+Remove backr.py and restor.py from PATH then delete the repository eg:
+
+```
+rm ~/.local/bin/backr.py
+
+rm ~/.local/bin/restor.py
+
+rm -rf ~/backr-py/
+```
