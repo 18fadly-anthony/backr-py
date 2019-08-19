@@ -40,8 +40,7 @@ def main():
 
     vc_file = backbase+"/backtrack.txt"
 
-    print("listing backups...")
-    print()
+    print("listing backups..." + '\n')
     if os.path.exists(vc_file):
         data = pickle.load(open(vc_file, "rb"))
         possible_backups = ["placeholder"]
@@ -56,13 +55,11 @@ def main():
                     possible_backups += [i]
 
         # print most recent available backup
-        print()
-        print("most recent available backup:")
+        print('\n' + "most recent available backup:")
         if isinstance(possible_backups[-1], int):
-            print(data[possible_backups[-1]])
+            print(str(data[possible_backups[-1]]) + '\n')
         else:
-            print("no possible backups")
-        print()
+            print("no possible backups" + '\n')
 
         has_number = False
         while not has_number:
@@ -105,6 +102,5 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print()
-        print("exit")
+        print('\n' + "exit")
         sys.exit(0)
