@@ -18,14 +18,8 @@ a simple backup tool
 git clone https://github.com/aidenholmes/backr-py
 
 cd backr-py
-```
 
-put `backr.py` and `restor.py` in PATH, eg:
-
-```
-ln -s ~/backr-py/backr.py ~/.local/bin
-
-ln -s ~/backr-py/restor.py ~/.local/bin
+make install # installs to ~/.local/bin
 ```
 
 ## Usage
@@ -40,14 +34,14 @@ restor.py # to restore
 
 ## Removal
 
-Remove backr.py and restor.py from PATH then delete the repository eg:
-
 ```
-rm ~/.local/bin/backr.py
+cd backr-py
 
-rm ~/.local/bin/restor.py
+make uninstall # removes from ~/.local/bin
 
-rm -rf ~/backr-py/
+cd ..
+
+rm -rf backr-py/
 ```
 
 ## Scheduling Backups with Cron
