@@ -117,6 +117,9 @@ def main():
              # Create the folder only if it is ~/backrs
              if backup_location == default_location:
                  os.makedirs(backup_location)
+                 f = open('.backr-location', 'w')
+                 f.write(backup_location)
+                 f.close()
              else:
                  print(backup_location + " does not exist")
                  sys.exit(1)
