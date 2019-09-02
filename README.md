@@ -15,7 +15,7 @@ a simple backup tool
 ## Installation
 
 ```
-git clone https://github.com/aidenholmes/backr-py
+git clone https://git.teknik.io/aidenholmes/backr-py
 
 cd backr-py
 
