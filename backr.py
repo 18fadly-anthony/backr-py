@@ -101,7 +101,10 @@ def main():
         if not prompt_for_location:
             backup_location = default_location
         else:
-            backup_location = input("Enter a location to save (or leave blank for default "+default_location+"): ")
+            print("Enter a save location")
+            print("Leave blank for default "+default_location)
+            print("The path will be created if it does not exist")
+            backup_location = input("> ")
 
             # If the user leaves the location blank, use the default (~/backrs)
             if backup_location == "":
