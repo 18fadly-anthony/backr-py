@@ -167,21 +167,15 @@ def main():
     # Remember that "time" variable contains basename-time-comment
     backup_location += "/" + time
 
-    # Create the basename-time-comment directory
-    if not os.path.exists(backup_location):
-        os.makedirs(backup_location)
-
-    # This line does the actual backup, it copies the current directory to the backup location
-    copy_tree(cwd, backup_location)
-
     # If use_compression was set, make a tarball of the backup
-    # Then delete the original backup, then output that folder was backed up
     # Output varies depending on whether or not it was compressed
     if use_compression:
-        make_tarfile(backbase+"/"+time+".tar.gz", backup_location)
-        shutil.rmtree(backup_location)
+        make_tarfile(backbase+"/"+time+".tar.gz", cwd)
         print("folder backed up to "+backbase+"/"+time+".tar.gz")
     else:
+        # This line does the actual backup it creates the backup location folder
+        # and copies the current directory to the backup location
+        copy_tree(cwd, backup_location)
         print("folder backed up to "+backup_location)
 
     # We use a file called backtrack.txt to keep track of how many backups
