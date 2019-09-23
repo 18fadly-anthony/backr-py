@@ -12,7 +12,6 @@ import datetime
 import hashlib
 import sys
 import tarfile
-import shutil
 import pickle
 from distutils.dir_util import copy_tree
 
