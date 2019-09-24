@@ -14,21 +14,37 @@ import shutil
 import pickle
 from distutils.dir_util import copy_tree
 
+def get_item_index(array, item):
+    for i in range(len(array)):
+        if array[i] == item:
+            return i
+    return False
+
 for q in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
         print("restor tool for backr")
         print("usage: restor.py [-h|--help]")
         print("[-h|--help] - print this help")
-        exit()
+        print("[-s|--source <source>] - set dir to restor")
+        sys.exit()
+    if "-s" in sys.argv:
+        cwd = sys.argv[get_item_index(sys.argv,"-s")+1]
+    elif "--source" in sys.argv:
+        cwd = sys.argv[get_item_index(sys.argv,"--source")+1]
+
 
 def main():
     # set variables
-    cwd = os.getcwd()
+    global cwd
+    try:
+        cwd
+    except NameError:
+        cwd = os.getcwd()
     basename = os.path.basename(cwd)
 
     # get backup location
-    if os.path.isfile(".backr-location"):
-        with open('.backr-location', 'r') as myfile:
+    if os.path.isfile(cwd + "/.backr-location"):
+        with open(cwd + '/.backr-location', 'r') as myfile:
             backup_location = myfile.read()
     else:
         print(".backr-location file not found")
