@@ -120,6 +120,10 @@ def main():
         cwd
     except NameError:
         cwd = os.getcwd()
+    else:
+        if not os.path.exists(cwd):
+            print("Error: " + cwd + " not found")
+            sys.exit(1)
 
     # Determining save location:
     # Check for .backr_location file with stores save location after first run
