@@ -46,21 +46,15 @@ rm -rf backr-py/
 
 ## Scheduling Backups with Cron
 
-1. Backup directory manually to set backr location
-
-```
-cd /foo/bar
-
-backr.py
-```
-
-2. Add command with `crontab -e`
+1. Add command with `crontab -e`
 
 ```
 # add this to crontab:
 
-@reboot cd /foo/bar; /home/user/.local/bin/backr.py -n -w
+@reboot cd /foo/bar; /home/user/.local/bin/backr.py -n -w -l "/foo/backups"
 ```
+
+2. Change `/foo/bar` to your folder and `/foo/backups` to your backup location
 
 3. Change `@reboot` to your desired schedule
 
