@@ -28,6 +28,7 @@ for q in range(len(sys.argv)):
         print("[-s|--source <source>] - set dir to restore")
         print("if source is not set, current directory will be used")
         print("[-l|--location <location>] - set location to restore to")
+        print("[-d|--default] - restore most recent backup without prompting")
         sys.exit()
     if "-s" in sys.argv:
         cwd = sys.argv[get_item_index(sys.argv,"-s")+1]
@@ -37,11 +38,16 @@ for q in range(len(sys.argv)):
         restore_location = sys.argv[get_item_index(sys.argv,"-l")+1]
     elif "--location" in sys.argv:
         restore_location = sys.argv[get_item_index(sys.argv,"--location")+1]
+    if "-d" in sys.argv or "--default" in sys.argv:
+        use_most_recent = True
+    else:
+        use_most_recent = False
 
 def main():
     # set variables
     global cwd
     global restore_location
+    global use_most_recent
     try:
         cwd
     except NameError:
@@ -80,10 +86,15 @@ def main():
         print('\n' + "most recent available backup:")
         if isinstance(possible_backups[-1], int):
             print(str(data[possible_backups[-1]]) + '\n')
+            if use_most_recent:
+                backup_number = possible_backups[-1]
+                has_number = True
+            else:
+                has_number = False
         else:
             print("no possible backups" + '\n')
+            has_number = False
 
-        has_number = False
         while not has_number:
             try:
                 backup_number = input("Choose a number to restore from: ")
