@@ -47,14 +47,14 @@ for i in range(len(sys.argv)):
         prompt_for_compression = True
     if "-w" in sys.argv or "--no-comment" in sys.argv:
         prompt_for_comment = False
-    else:
-        prompt_for_comment = True
-    if "--comment" in sys.argv:
+    elif "--comment" in sys.argv:
         comment = sys.argv[get_item_index(sys.argv,"--comment")+1]
         prompt_for_comment = False
-    if "-e" in sys.argv:
+    elif "-e" in sys.argv:
         comment = sys.argv[get_item_index(sys.argv,"-e")+1]
         prompt_for_comment = False
+    else:
+        prompt_for_comment = True
 
 # Define a function for asking the user yes or no questions
 # Taken from: http://stackoverflow.com/questions/3041986/ddg#3041990
