@@ -15,6 +15,12 @@ import tarfile
 import pickle
 from distutils.dir_util import copy_tree
 
+def get_item_index(array, item):
+    for i in range(len(array)):
+        if array[i] == item:
+            return i
+    return False
+
 # Take Arguments
 for i in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
@@ -25,6 +31,7 @@ for i in range(len(sys.argv)):
         print("[-n|--no-compress] - do not use compression")
         print("[-d|--default] - backup to default location, ~/backrs")
         print("[-w|--no-comment] - do not prompt for comment")
+        print("[-e|--comment <comment>] - set comment")
         sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
         prompt_for_location = False
@@ -42,6 +49,12 @@ for i in range(len(sys.argv)):
         prompt_for_comment = False
     else:
         prompt_for_comment = True
+    if "--comment" in sys.argv:
+        comment = sys.argv[get_item_index(sys.argv,"--comment")+1]
+        prompt_for_comment = False
+    if "-e" in sys.argv:
+        comment = sys.argv[get_item_index(sys.argv,"-e")+1]
+        prompt_for_comment = False
 
 # Define a function for asking the user yes or no questions
 # Taken from: http://stackoverflow.com/questions/3041986/ddg#3041990
@@ -82,6 +95,7 @@ def make_tarfile(output_filename, source_dir):
 def main():
     # use_compression was defined by an argument in the initial for loop
     global use_compression
+    global comment
     if prompt_for_compression:
         use_compression = query_yes_no("Use compression?")
 
@@ -121,7 +135,10 @@ def main():
     if prompt_for_comment:
         comment = get_comment()
     else:
-        comment = ""
+        try:
+            comment
+        except NameError:
+            comment = ""
 
     # Set some varibles:
     # Set current working directory
