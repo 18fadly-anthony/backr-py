@@ -34,6 +34,7 @@ for i in range(len(sys.argv)):
         print("[-e|--comment <comment>] - set comment")
         print("[-l|--location <location>] - set location")
         print("location will be ignored if .backr-location file exists")
+        print("[-s|--source <source>] - set source dir to backup")
         sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
         prompt_for_location = False
@@ -63,6 +64,10 @@ for i in range(len(sys.argv)):
         prompt_for_comment = False
     else:
         prompt_for_comment = True
+    if "-s" in sys.argv:
+        cwd = sys.argv[get_item_index(sys.argv,"-s")+1]
+    elif "--source" in sys.argv:
+        cwd = sys.argv[get_item_index(sys.argv,"--source")+1]
 
 # Define a function for asking the user yes or no questions
 # Taken from: http://stackoverflow.com/questions/3041986/ddg#3041990
@@ -105,15 +110,22 @@ def main():
     global use_compression
     global comment
     global backup_location
+    global cwd
     if prompt_for_compression:
         use_compression = query_yes_no("Use compression?")
+
+    # Set current working directory
+    try:
+        cwd
+    except NameError:
+        cwd = os.getcwd()
 
     # Determining save location:
     # Check for .backr_location file with stores save location after first run
     home = os.path.expanduser("~")
     default_location = home+"/backrs"
-    if os.path.isfile(".backr-location"):
-        with open('.backr-location', 'r') as myfile:
+    if os.path.isfile(cwd + "/.backr-location"):
+        with open(cwd + '/.backr-location', 'r') as myfile:
             backup_location = myfile.read()
 
     # If .backr_location does not exit, prompt the user for a location and save
@@ -136,7 +148,7 @@ def main():
                 backup_location = default_location
 
         # Write it to the file
-        f = open('.backr-location', 'w')
+        f = open(cwd + '/.backr-location', 'w')
         f.write(backup_location)
         f.close()
 
@@ -152,10 +164,7 @@ def main():
         except NameError:
             comment = ""
 
-    # Set some varibles:
-    # Set current working directory
-    cwd = os.getcwd()
-
+    # Set some variables:
     # Set basename directory variable
     basename = os.path.basename(cwd)
 
