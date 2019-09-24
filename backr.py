@@ -32,8 +32,16 @@ for i in range(len(sys.argv)):
         print("[-d|--default] - backup to default location, ~/backrs")
         print("[-w|--no-comment] - do not prompt for comment")
         print("[-e|--comment <comment>] - set comment")
+        print("[-l|--location <location>] - set location")
+        print("location will be ignored if .backr-location file exists")
         sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
+        prompt_for_location = False
+    elif "-l" in sys.argv:
+        backup_location = sys.argv[get_item_index(sys.argv,"-l")+1]
+        prompt_for_location = False
+    elif "--location" in sys.argv:
+        backup_location = sys.argv[get_item_index(sys.argv,"--location")+1]
         prompt_for_location = False
     else:
         prompt_for_location = True
@@ -96,6 +104,7 @@ def main():
     # use_compression was defined by an argument in the initial for loop
     global use_compression
     global comment
+    global backup_location
     if prompt_for_compression:
         use_compression = query_yes_no("Use compression?")
 
@@ -112,7 +121,10 @@ def main():
     # backr more portable
     else:
         if not prompt_for_location:
-            backup_location = default_location
+            try:
+                backup_location
+            except NameError:
+                backup_location = default_location
         else:
             print("Enter a save location")
             print("Leave blank for default "+default_location)
