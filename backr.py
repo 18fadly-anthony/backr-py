@@ -25,7 +25,7 @@ def get_item_index(array, item):
 for i in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
         print("backr simple backup tool")
-        print("usage: backr.py [-h|--help] [-c|--compress] [-d|--default]")
+        print("usage: backr.py -s <source> -l <location> [-n|-c] [-w|-e <comment>]")
         print("[-h|--help] - print this help")
         print("[-c|--compress] - use compression")
         print("[-n|--no-compress] - do not use compression")
@@ -35,6 +35,7 @@ for i in range(len(sys.argv)):
         print("[-l|--location <location>] - set location")
         print("location will be ignored if .backr-location file exists")
         print("[-s|--source <source>] - set source dir to backup")
+        print("if source is not set, current directory will be used")
         sys.exit(0)
     if "-d" in sys.argv or "--default" in sys.argv:
         prompt_for_location = False

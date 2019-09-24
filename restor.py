@@ -23,9 +23,10 @@ def get_item_index(array, item):
 for q in range(len(sys.argv)):
     if "-h" in sys.argv or "--help" in sys.argv:
         print("restor tool for backr")
-        print("usage: restor.py [-h|--help]")
+        print("usage: restor.py -s <source> -l <location>")
         print("[-h|--help] - print this help")
         print("[-s|--source <source>] - set dir to restore")
+        print("if source is not set, current directory will be used")
         print("[-l|--location <location>] - set location to restore to")
         sys.exit()
     if "-s" in sys.argv:

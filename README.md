@@ -25,11 +25,13 @@ make install # installs to ~/.local/bin
 ## Usage
 
 ```
-cd /foo/bar
+backr.py -s <source> -l <location> [-n|-c] [-w|-e <comment>]
 
-backr.py # to backup
+restor.py -s <source> -l <location>
 
-restor.py # to restore
+# Example:
+
+backr.py -s /foo/bar -l /foo/backups -n -w
 ```
 
 ## Removal
