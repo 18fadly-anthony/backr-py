@@ -25,17 +25,22 @@ for q in range(len(sys.argv)):
         print("restor tool for backr")
         print("usage: restor.py [-h|--help]")
         print("[-h|--help] - print this help")
-        print("[-s|--source <source>] - set dir to restor")
+        print("[-s|--source <source>] - set dir to restore")
+        print("[-l|--location <location>] - set location to restore to")
         sys.exit()
     if "-s" in sys.argv:
         cwd = sys.argv[get_item_index(sys.argv,"-s")+1]
     elif "--source" in sys.argv:
         cwd = sys.argv[get_item_index(sys.argv,"--source")+1]
-
+    if "-l" in sys.argv:
+        restore_location = sys.argv[get_item_index(sys.argv,"-l")+1]
+    elif "--location" in sys.argv:
+        restore_location = sys.argv[get_item_index(sys.argv,"--location")+1]
 
 def main():
     # set variables
     global cwd
+    global restore_location
     try:
         cwd
     except NameError:
@@ -96,12 +101,16 @@ def main():
 
     has_restore_location = False
     while not has_restore_location:
-        restore_location = input("Enter a location to restore to: ")
+        try:
+            restore_location
+        except NameError:
+            restore_location = input("Enter a location to restore to: ")
         if os.path.isdir(restore_location):
             print("Will restore to "+restore_location)
             has_restore_location = True
         else:
             print(restore_location+" does not exist")
+            del restore_location
 
     restore_location += "/"
     restore_location += basename
