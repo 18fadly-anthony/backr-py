@@ -174,7 +174,10 @@ def main():
     basename = os.path.basename(cwd)
 
     # Set current time in a possible dir format
-    time = basename + "-" + datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S') + "-" + comment
+    if comment == "":
+        time = basename + "-" + datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S')
+    else:
+        time = basename + "-" + datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S') + "-" + comment
 
     # Generate a hash of the current dir
     qhash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()[:7]
