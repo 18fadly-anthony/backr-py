@@ -18,7 +18,11 @@ from distutils.dir_util import copy_tree
 def get_item_index(array, item):
     for i in range(len(array)):
         if array[i] == item:
-            return i
+            if len(array) > i + 1:
+                return i
+            else:
+                print("error: argument required after " + array[i])
+                sys.exit(1)
     return False
 
 # Take Arguments
