@@ -53,7 +53,7 @@ rm -rf backr-py/
 ```
 # add this to crontab:
 
-@reboot /home/user/.local/bin/backr.py -s /foo/bar -l "/foo/backups -n -w"
+@reboot /home/user/.local/bin/backr.py -s /foo/bar -l /foo/backups -n -w
 ```
 
 2. Change `/foo/bar` to your folder and `/foo/backups` to your backup location
