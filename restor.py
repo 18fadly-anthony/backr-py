@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2019 Aiden Holmes (aidenholmes@teknik.io)
+# Copyright (c) 2020 Anthony Fadly (18fadly.anthony@gmail.com)
 # This program is licensed under the Apache License 2.0
 # You are free to copy, modify, and redistribute the code.
 # See LICENSE file.
