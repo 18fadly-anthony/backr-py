@@ -13,6 +13,7 @@ import hashlib
 import sys
 import tarfile
 import pickle
+import socket
 from distutils.dir_util import copy_tree
 
 def get_item_index(array, item):
@@ -183,8 +184,11 @@ def main():
     else:
         time = basename + "-" + datetime.datetime.now().strftime('%G-%b-%d-%I_%M%p_%S') + "-" + comment
 
-    # Generate a hash of the current dir
-    qhash = hashlib.sha1(cwd.encode("UTF-8")).hexdigest()[:7]
+    # Generate a hash of the current dir and system hostname
+    hostname = socket.gethostname()
+    host_and_cwd = hostname + ":" + cwd
+    print(host_and_cwd)
+    qhash = hashlib.sha1(host_and_cwd.encode("UTF-8")).hexdigest()[:7]
 
     # Set basehash var to basename and hash
     basehash = basename + "-" + qhash
