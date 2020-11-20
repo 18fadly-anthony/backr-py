@@ -187,7 +187,6 @@ def main():
     # Generate a hash of the current dir and system hostname
     hostname = socket.gethostname()
     host_and_cwd = hostname + ":" + cwd
-    print(host_and_cwd)
     qhash = hashlib.sha1(host_and_cwd.encode("UTF-8")).hexdigest()[:7]
 
     # Set basehash var to basename and hash
